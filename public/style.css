@@ -29,7 +29,10 @@ body {
   flex-direction: column;
   height: 100%;
 }
-
+.btn{
+  border:None;
+  cursor:pointer;
+}
 a {
   text-decoration: none;
 }
