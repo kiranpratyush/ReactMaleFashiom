@@ -30,6 +30,15 @@ body {
   height: 100%;
 }
 
-a{
-  text-decoration:none;
+a {
+  text-decoration: none;
+}
+
+@media screen and (max-width: 550px) {
+  body {
+    font-size: 1.2rem;
+  }
+  main {
+    padding: 15px;
+  }
 }

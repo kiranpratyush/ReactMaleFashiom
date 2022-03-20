@@ -54,19 +54,7 @@ header {
   gap: 10px;
 }
 
-
-
 @media screen and (max-width: 550px) {
-  body {
-    font-size: 1.2rem;
-  }
-  main {
-    padding: 15px;
-  }
-  .footer-container {
-    justify-content: flex-start;
-    gap: 20px;
-  }
   .header-top {
     padding: 15px;
   }
