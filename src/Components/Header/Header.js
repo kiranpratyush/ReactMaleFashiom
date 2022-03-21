@@ -17,7 +17,7 @@ export function Header() {
             <img src={logo} alt="Male Fashion Logo" />
           </div>
           <nav className="first-nav">
-            <a href="https://www.google.com" class="btn-link">
+            <a href="https://www.google.com" className="btn-link">
               Home
             </a>
             <a href="https://www.google.com">Shop</a>

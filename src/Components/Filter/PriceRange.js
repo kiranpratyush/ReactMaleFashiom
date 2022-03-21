@@ -1,4 +1,5 @@
 import React from 'react';
+import "./style.css"
 import { useState } from 'react';
 export function Slider() {
   const [value, setValue] = useState(0);
@@ -9,13 +10,11 @@ export function Slider() {
     <nav>
     <div className ="category-list">
     <h1>Price Range</h1>
-    <input className='category-list'
+    <input className='category-list slider'
       type="range"
-      min="1"
-      max="2000"
+      min="0"
+      max="900"
       value={value}
-      class="slider"
-      id="myRange"
       onChange={handleChange}
     />
     </div>

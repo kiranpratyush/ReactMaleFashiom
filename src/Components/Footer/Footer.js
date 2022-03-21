@@ -4,20 +4,20 @@ import "./style.css"
 export function Footer() {
   return (
     <footer>
-      <div class="footer-container">
-        <div class="footer-about">
-          <div class="footer-logo">
-            <img src={footerLogo} alt="" srcset="" />
+      <div className="footer-container">
+        <div className="footer-about">
+          <div className="footer-logo">
+            <img src={footerLogo} alt=""/>
           </div>
           <p>The customer is at the heart of our business</p>
         </div>
-        <div class="footer-shopping">
+        <div className="footer-shopping">
           <h6>SHOPPING</h6>
           <ul>
-            <li>Contact Us</li>
-            <li>payment Methods</li>
-            <li>Delivery</li>
-            <li>Return & Exchanges</li>
+            <li key ="27">Contact Us</li>
+            <li key ="50">payment Methods</li>
+            <li key ="52">Delivery</li>
+            <li key ="60">Return & Exchanges</li>
           </ul>
         </div>
       </div>

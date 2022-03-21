@@ -19,6 +19,13 @@ img {
 .card-animated h4 {
   margin-top: 20px;
 }
+.card-animated button{
+  top:0;
+  right:0;
+  background:none;
+  position: relative;
+
+}
 
 
 

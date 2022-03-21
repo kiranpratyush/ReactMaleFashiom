@@ -1,23 +1,17 @@
 import React from 'react';
 import { Card } from '../Card/Card';
 import './style.css';
-
-const data = [
-  { itemName: 'Coat', Price: '23' },
-  { itemName: 'Coat', Price: '23' },
-  { itemName: 'Coat', Price: '23' },
-  { itemName: 'Coat', Price: '23' },
-  { itemName: 'Coat', Price: '23' },
-  { itemName: 'Coat', Price: '23' },
-  { itemName: 'Coat', Price: '23' },
-  { itemName: 'Coat', Price: '23' },
-];
+import {  useDataContext } from '../../Contexts/DataContext';
 export function ContentContainer({ children }) {
+  const {state,dispatch} = useDataContext()
+  
+  const data = state.data
+  console.log(data)
   return (
     <>
       <div className="content-container">
         {data.map((element) => (
-          <Card itemName={element.itemName} Price={element.Price} />
+          <Card itemName={element.itemName} Price={element.Price} key ={element.id} />
         ))}
       </div>
     </>
