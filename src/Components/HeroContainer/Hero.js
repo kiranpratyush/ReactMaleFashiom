@@ -12,7 +12,7 @@ export function HeroContainer() {
             A specialist label creating luxury essentials. Ethically crafted
             with an unwavering commitment to exceptional quality
           </p>
-          <a class="btn btn-primary" href="#">
+          <a class="btn btn-primary" href="https://www.google.com">
             SHOP NOW
           </a>
         </div>

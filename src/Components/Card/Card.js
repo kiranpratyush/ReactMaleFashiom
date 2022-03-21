@@ -6,11 +6,11 @@ export function Card({itemName,Price})
     return(
         <div className="card-animated">
           <div className="card-imgwrapper">
-            <img src={shirt} alt="image" />
+            <img src={shirt} alt="Product" />
           </div>
           <button className="btn btn-default"><i class="bi bi-heart"></i></button>
           <div className="card-animated-body">
-            <a href="#" className="btn btn-link">Add to cart</a>
+            <a href="https://www.google.com" className="btn btn-link">Add to cart</a>
             <h5>{itemName}</h5>
             <h4>{Price}</h4>
           </div>
