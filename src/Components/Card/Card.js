@@ -8,9 +8,9 @@ export function Card({itemName,Price})
           <div className="card-imgwrapper">
             <img src={shirt} alt="image" />
           </div>
-          <button className="btn btn-default"><i class="bi bi-heart"></i></button>
+          <button className="btn btn-default icon"><i class="bi bi-heart"></i></button>
           <div className="card-animated-body">
-            <a href="#" className="btn btn-link">Add to cart</a>
+            <button className="btn btn-link cart">Add to cart</button>
             <h5>{itemName}</h5>
             <h4>{Price}</h4>
           </div>
