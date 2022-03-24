@@ -9,7 +9,7 @@ function reducerfn(previousState, action) {
         ...previousState,
         data: [
           ...previousState.data,
-          { id: action.payload.id, itemName: action.payload.title, price: action.payload.Price,image:action.payload.image },
+          { id: action.payload.id, itemName: action.payload.title, price: action.payload.price,image:action.payload.image,category:action.payload.category },
         ],
       };
     default:
@@ -25,7 +25,7 @@ function ContextProvider({ children }) {
         dispatch({type:"setData",payload:element[0]})    
       });
   }
-  const [state, dispatch] = useReducer(reducerfn, {data:[{itemName:"s",price:23,}] });
+  const [state, dispatch] = useReducer(reducerfn, {data:[]});
   useEffect(()=>
   {
     getData()
