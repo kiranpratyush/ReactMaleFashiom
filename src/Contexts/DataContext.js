@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useReducer } from 'react';
+import { filter } from '../utilityFunctions/filter';
 import { createContext } from 'react';
 import { getData } from '../getData';
 const dataContext = createContext();
@@ -12,8 +13,12 @@ function reducerfn(previousState, action) {
           { id: action.payload.id, itemName: action.payload.title, price: action.payload.price,image:action.payload.image,category:action.payload.category },
         ],
       };
+    case "FILTERBYCATEGORY":
+      const filteredData = filter("Category",{categoryList:action.payload,data:previousState.data})
+      const newState =filteredData.length>0?{...previousState,filter:true,filteredData}:{...previousState,filter:false,filteredData}
+      return newState
     default:
-      return;
+      return previousState;
   }
 }
 
