@@ -25,5 +25,4 @@ async function getData(){
     const array =  await updatedProductArray
     return array
 }
-
 export {getData}

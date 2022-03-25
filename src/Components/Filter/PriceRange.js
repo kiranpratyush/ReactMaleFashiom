@@ -1,11 +1,13 @@
-import React from 'react';
+import React  from 'react';
 import "./style.css"
-import { useState } from 'react';
+import { useDataContext } from '../../Contexts/DataContext';
 export function Slider() {
-  const [value, setValue] = useState(0);
+  const {dispatch} = useDataContext()
   function handleChange(e) {
-    setValue(e.target.value);
+    dispatch({type:"filter",payload:{category:"slider",data:e.target.value}})
+
   }
+ 
   return (
     <nav>
     <div className ="category-list">
@@ -13,8 +15,7 @@ export function Slider() {
     <input className='category-list slider'
       type="range"
       min="0"
-      max="900"
-      value={value}
+      max="30"
       onChange={handleChange}
     />
     </div>

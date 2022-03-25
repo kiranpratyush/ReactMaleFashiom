@@ -4,7 +4,8 @@ import './style.css';
 import { useDataContext } from '../../Contexts/DataContext';
 export function ContentContainer() {
   const { state } = useDataContext();
-  const data = state.filter ? state.filteredData : state.data;
+  const data = state.data
+  console.log(data)
   return (
     <>
       <div className="content-container">
@@ -14,6 +15,7 @@ export function ContentContainer() {
             price={element.price}
             key={element.id}
             image={element.image}
+            rating ={element.rating}
           />
         ))}
       </div>

@@ -4,12 +4,11 @@ import { useDataContext } from '../../Contexts/DataContext';
 import { Category } from '../Category/Category';
 import { SortByPrice } from '../Filter/SortByPrice';
 import { Slider } from '../Filter/PriceRange';
-
 export function Aside() {
   const {state} = useDataContext()
   return (
     <aside className='side-bar'>
-      <Category data={state.data} />
+      <Category data={state.categories} />
       <SortByPrice />
       <Slider />
     </aside>
