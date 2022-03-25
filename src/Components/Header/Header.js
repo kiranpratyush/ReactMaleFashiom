@@ -1,7 +1,8 @@
 import React from 'react';
 import logo from '../../Assets/logo.png';
 import './Header.css';
-
+import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
+import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 export function Header() {
   return (
     <>
@@ -17,14 +18,15 @@ export function Header() {
             <img src={logo} alt="Male Fashion Logo" />
           </div>
           <nav className="first-nav">
-            <a href="https://www.google.com" className="btn-link">
+            <a href="https://www.google.com" class="btn-link">
               Home
             </a>
             <a href="https://www.google.com">Shop</a>
           </nav>
           <nav className="second-nav">
-            <a href="https://www.google.com">WishList</a>
-            <a href="https://www.google.com">Add to cart</a>
+            <button className='cart__button'><LocalMallOutlinedIcon/><span>3</span></button>
+            <button className='cart__button'><FavoriteBorderOutlinedIcon/><span>3</span></button>
+
           </nav>
         </div>
       </header>
