@@ -16,7 +16,7 @@ export function Card({ id, itemName, price, image, rating }) {
     
     dispatch({
       type: 'ADD_TO_CART',
-      payload: { data: [{ id, itemName, price, image }] },
+      payload: { data: [{ id, itemName, price, image ,quantity:1 }] },
     });
   }
   function handleAddToWishList() {

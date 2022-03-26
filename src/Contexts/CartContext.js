@@ -9,12 +9,25 @@ function reducerfn(previousState,action)
     {
         case "ADD_TO_CART":
             return {...previousState,data:[...previousState.data,...action.payload.data]}
-        case "REMOVE_FROM_CART":
-            return {...previousState}
         
         case "ADD_TO_WISHLIST":
             return {...previousState,wishList:[...previousState.wishList,...action.payload.data]}
-        
+        case "MOVE_TO_WISHLIST":
+            const wishListdata = previousState.data.filter(element=>element.id!==action.payload.id)
+            const cartData = previousState.data.filter(element=>element.id===action.payload.id)
+            console.log(wishListdata,cartData)
+            return {...previousState,wishList:[...previousState.wishList,wishListdata],data:[...cartData]}
+
+        case "REMOVE_FROM_CART":
+            const data = previousState.data.filter(element=>element.id!==action.payload.id)
+            return {...previousState,data}
+        case "INCREMENT_QUANTITY":
+            const dataToBeIncremented = previousState.data.map(element=>element.id===action.payload.id?{...element,quantity:element.quantity+1}:element)
+            return {...previousState,data:dataToBeIncremented}
+        case "DECREMENT_QUANTITY":
+            const dataToBeDecremented = previousState.data.map(element=>element.id===action.payload.id&&element.quantity>1?{...element,quantity:element.quantity-1}:{...element})
+            return {...previousState,data:dataToBeDecremented}
+
         default:
             return {...previousState}
     }
@@ -28,7 +41,7 @@ function useCartContext()
 }
 function CartContextProvider({children})
 {
-    const [state,dispatch] = useReducer(reducerfn,{data:[],wishList:[]})
+    const [state,dispatch] = useReducer(reducerfn,{data:[{itemName:"shoe",price:20,quantity:1,id:1}],wishList:[]})
     return <CartContext.Provider value={{state,dispatch}}>{children}</CartContext.Provider>
 }
 
