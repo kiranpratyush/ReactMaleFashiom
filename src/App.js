@@ -1,5 +1,5 @@
 import React from 'react';
-import { CartPage } from './Pages/CartPage';
+import { WishListPage } from './Pages/WishList';
 export default function App() {
-  return (<CartPage />)
+  return (<WishListPage />)
 }
