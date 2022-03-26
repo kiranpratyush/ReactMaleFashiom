@@ -3,7 +3,9 @@ import logo from '../../Assets/logo.png';
 import './Header.css';
 import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
+import { useCartContext } from '../../Contexts/CartContext';
 export function Header() {
+  const {state} = useCartContext()
   return (
     <>
       <header>
@@ -24,8 +26,8 @@ export function Header() {
             <a href="https://www.google.com">Shop</a>
           </nav>
           <nav className="second-nav">
-            <button className='cart__button'><LocalMallOutlinedIcon/><span>3</span></button>
-            <button className='cart__button'><FavoriteBorderOutlinedIcon/><span>3</span></button>
+            <button className='cart__button'><LocalMallOutlinedIcon/><span>{state.data.length}</span></button>
+            <button className='cart__button'><FavoriteBorderOutlinedIcon/><span>{state.wishList.length}</span></button>
 
           </nav>
         </div>

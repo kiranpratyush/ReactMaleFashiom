@@ -71,3 +71,11 @@ img {
   transform: translateY(0px);
   transition: all 0.6s;
 }
+
+.hearticon{
+  color:red;
+  font-size: large;
+}
+.heartoutlineicon{
+  font-size: large;
+}
