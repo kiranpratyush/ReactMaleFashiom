@@ -1,7 +1,18 @@
-import React from "react"
-import ReactDOM from "react-dom"
-import App from "./App"
-import { ContextProvider } from "./Contexts/DataContext"
-const div = document.querySelector("#root")
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+import { ContextProvider } from './Contexts/DataContext';
+import { CartContextProvider } from './Contexts/CartContext';
 
-ReactDOM.render(<React.StrictMode><ContextProvider><App/></ContextProvider></React.StrictMode>,div)
+const div = document.querySelector('#root');
+
+ReactDOM.render(
+  <React.StrictMode>
+    <CartContextProvider>
+      <ContextProvider>
+        <App />
+      </ContextProvider>
+    </CartContextProvider>
+  </React.StrictMode>,
+  div
+);
