@@ -22,7 +22,7 @@ export function Category({ data }) {
   const {dispatch} = useDataContext()
   function handleChange(e,index) {
      checked[e.target.value] =e.target.checked
-     dispatch({type:"filter",payload:{category:"CATAEGORY",data:checked}})
+     dispatch({type:"FILTER",payload:{category:"CATAEGORY",data:checked}})
     }
   
   return (

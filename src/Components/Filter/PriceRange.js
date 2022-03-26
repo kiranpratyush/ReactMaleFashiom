@@ -4,7 +4,7 @@ import { useDataContext } from '../../Contexts/DataContext';
 export function Slider() {
   const {dispatch} = useDataContext()
   function handleChange(e) {
-    dispatch({type:"filter",payload:{category:"slider",data:e.target.value}})
+    dispatch({type:"FILTER",payload:{category:"slider",data:e.target.value}})
 
   }
  

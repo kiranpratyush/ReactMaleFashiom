@@ -7,7 +7,7 @@ const dataContext = createContext();
 function ContextProvider({ children }) {
   function setData(arr) {
     arr.forEach((element) => {
-      dispatch({ type: 'setData', payload: element[0] });
+      dispatch({ type: 'SET_DATA', payload: element[0] });
     });
   }
   const [state, dispatch] = useReducer(reducerfn, { data: [],filterListValue:[],categories:["shoe","jacket","bag"]});

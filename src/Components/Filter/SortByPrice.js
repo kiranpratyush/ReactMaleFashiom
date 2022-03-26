@@ -10,11 +10,11 @@ export function SortByPrice() {
       <form className="category-list">
         <h1>Sort By Price</h1>
         <div key ="23">
-          <input type="radio" value="LOWTOHIGH" name="sort" onClick ={()=>{dispatch({type:"filter",payload:{category:"LOWTOHIGH"}})} }/>
+          <input type="radio" value="LOWTOHIGH" name="sort" onClick ={()=>{dispatch({type:"FILTER",payload:{category:"LOWTOHIGH"}})} }/>
           <label htmlFor="SORTLOWTOHIGH">Low to high</label>
         </div>
         <div key ="24">
-          <input type="radio" value="HIGHTOLOW" name="sort" onClick ={()=>dispatch({type:"filter",payload:{category:"HIGHTOLOW"}})}  />
+          <input type="radio" value="HIGHTOLOW" name="sort" onClick ={()=>dispatch({type:"FILTER",payload:{category:"HIGHTOLOW"}})}  />
           <label htmlFor="HIGHTOLOW">High to low</label>
         </div>
       </form>

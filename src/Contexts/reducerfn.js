@@ -2,7 +2,7 @@ import { filter } from '../utilityFunctions/filter';
 let initialData;
 export function reducerfn(previousState, {type,payload}) {
   switch (type) {
-    case 'setData':
+    case 'SET_DATA':
       initialData = {
         ...previousState,
         data: [
@@ -18,15 +18,13 @@ export function reducerfn(previousState, {type,payload}) {
         ],
       };
       return initialData;
-    case "filter":
-        console.log(payload)
-        console.log(previousState.filterListValue)
+    case "FILTER":
         let newFilterListValue = previousState.filterListValue.filter(element=>element.category!==payload.category)
         newFilterListValue =[...newFilterListValue,{category:payload.category,data:payload.data}]
-        console.log(newFilterListValue)
         const newData = filter(initialData,newFilterListValue)
         return {...previousState,data:newData,filterListValue:newFilterListValue}
-
+    case "CLEAR_FILTER":
+      return {...initialData}
 
     default:
       return previousState;
