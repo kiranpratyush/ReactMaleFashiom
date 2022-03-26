@@ -11,6 +11,7 @@ export function ContentContainer() {
       <div className="content-container">
         {data.map((element) => (
           <Card
+            id ={element.id}
             itemName={element.itemName}
             price={element.price}
             key={element.id}
