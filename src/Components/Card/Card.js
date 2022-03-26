@@ -6,7 +6,6 @@ import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlin
 import { useCartContext } from '../../Contexts/CartContext';
 export function Card({ id, itemName, price, image, rating }) {
   const { state, dispatch } = useCartContext();
-  console.log(state);
   const isPresentInCart = state.data.some((element) => element.id === id);
   const isPresentInWishList = state.wishList.some(
     (element) => element.id === id
