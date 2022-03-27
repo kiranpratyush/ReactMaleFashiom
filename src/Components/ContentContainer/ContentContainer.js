@@ -4,8 +4,7 @@ import './style.css';
 import { useDataContext } from '../../Contexts/DataContext';
 export function ContentContainer() {
   const { state } = useDataContext();
-  const data = state.data
-  console.log(data)
+  const data = state.filteredData.length>0?state.filteredData:state.data
   return (
     <>
       <div className="content-container">

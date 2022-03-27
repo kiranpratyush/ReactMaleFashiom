@@ -10,7 +10,7 @@ function ContextProvider({ children }) {
       dispatch({ type: 'SET_DATA', payload: element[0] });
     });
   }
-  const [state, dispatch] = useReducer(reducerfn, { data: [],filterListValue:[],categories:["shoe","jacket","bag"]});
+  const [state, dispatch] = useReducer(reducerfn, { data: [],filteredData:[],categories:["shoe","tshirt","bag"],filter:{category :[],price:"NONE",range:0}});
   useEffect(() => {
     getData().then((arr) => setData(arr));
   }, []);

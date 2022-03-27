@@ -1,8 +1,8 @@
-import React,{useEffect, useState} from 'react';
+import React  from 'react';
 
 import { useDataContext } from '../../Contexts/DataContext';
 
-function CheckBox({ data, Change, index, checked }) {
+function CheckBox({ data,checked,change }) {
   return (
     <div className="category-list">
       <div>
@@ -10,32 +10,34 @@ function CheckBox({ data, Change, index, checked }) {
           type="checkbox"
           name={data}
           value={data}
-          onChange={(e)=>{Change(e,index)}}
+          checked ={checked}
+          onChange ={change}
+          className="category_checkbox"
         />
         <label htmlFor={data}>{data}</label>
       </div>
     </div>
   );
 }
-let checked = {}
+
 export function Category({ data }) {
-  const {dispatch} = useDataContext()
-  function handleChange(e,index) {
-     checked[e.target.value] =e.target.checked
-     dispatch({type:"FILTER",payload:{category:"CATAEGORY",data:checked}})
-    }
+  const {state,dispatch} = useDataContext()
+  function handleChange(e)
+  { 
+    dispatch({type:"FILTER_BY_CATEGORY",payload:{isChecked:e.target.checked,value:e.target.value}})
+  }
   
   return (
     <>
       <h4>Category</h4>
-      <div className="category-list">
+      <div className="">
         {data.map((element, index) => (
           
           <CheckBox
             data={element}
-            Change={handleChange}
-            index={index}
+            change={handleChange}
             key={index}
+            checked ={state.filter.category.some(value=>value===element)}
           />
         ))}
       </div>

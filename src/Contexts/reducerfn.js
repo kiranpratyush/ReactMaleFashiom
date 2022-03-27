@@ -1,9 +1,9 @@
+
 import { filter } from '../utilityFunctions/filter';
-let initialData;
 export function reducerfn(previousState, {type,payload}) {
   switch (type) {
     case 'SET_DATA':
-      initialData = {
+      return {
         ...previousState,
         data: [
           ...previousState.data,
@@ -17,14 +17,20 @@ export function reducerfn(previousState, {type,payload}) {
           },
         ],
       };
-      return initialData;
-    case "FILTER":
-        let newFilterListValue = previousState.filterListValue.filter(element=>element.category!==payload.category)
-        newFilterListValue =[...newFilterListValue,{category:payload.category,data:payload.data}]
-        const newData = filter(initialData,newFilterListValue)
-        return {...previousState,data:newData,filterListValue:newFilterListValue}
+    case "FILTER_BY_CATEGORY":
+      const categoryFilterList = payload.isChecked?[...previousState.filter.category,payload.value]:previousState.filter.category.filter(element=>element!==payload.value)
+      const filterList = {...previousState.filter,category:categoryFilterList}
+      console.log(filterList)
+      return filter(previousState,filterList)
+    case "FILTER_BY_SORT":
+      console.log(payload)
+      return filter(previousState,{...previousState.filter,price:payload.value})
+    case "FILTER_BY_PRICE_RANGE":
+      console.log(previousState)
+      return filter(previousState,{...previousState.filter,range:payload.value})
     case "CLEAR_FILTER":
-      return {...initialData}
+      return {...previousState,filteredData:[],filter:{category:[],price:"NONE",range:0}}
+    
 
     default:
       return previousState;
