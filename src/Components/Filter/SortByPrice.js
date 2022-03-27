@@ -8,9 +8,9 @@ export function SortByPrice() {
   return (
     <>
       <form className="category-list">
-        <h1>Sort By Price</h1>
+        <p>Sort By Price</p>
         <div key ="23">
-          <input type="radio" value="LOWTOHIGH" name="sort" checked ={state.filter.price==="ASC"} onChange ={()=>{dispatch({type:"FILTER_BY_SORT",payload:{value:"ASC"}})} }/>
+          <input type="radio"  value="LOWTOHIGH" name="sort" checked ={state.filter.price==="ASC"} onChange ={()=>{dispatch({type:"FILTER_BY_SORT",payload:{value:"ASC"}})} }/>
           <label htmlFor="SORTLOWTOHIGH">Low to high</label>
         </div>
         <div key ="24">

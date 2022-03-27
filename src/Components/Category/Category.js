@@ -1,11 +1,12 @@
 import React  from 'react';
+import "./Category.css"
 
 import { useDataContext } from '../../Contexts/DataContext';
 
 function CheckBox({ data,checked,change }) {
   return (
     <div className="category-list">
-      <div>
+      <div className='category'>
         <input
           type="checkbox"
           name={data}
@@ -14,7 +15,7 @@ function CheckBox({ data,checked,change }) {
           onChange ={change}
           className="category_checkbox"
         />
-        <label htmlFor={data}>{data}</label>
+        <label htmlFor={data} className="category_label">{data}</label>
       </div>
     </div>
   );
