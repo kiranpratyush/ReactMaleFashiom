@@ -1,5 +1,5 @@
 import React from 'react';
-
+import './Signup.css';
 export function SignUp() {
   return (
     <div class="sign-up">
@@ -13,7 +13,7 @@ export function SignUp() {
         <input type="password" id="Password" class="input" required />
         <label for="confirm">confirm password</label>
         <input type="password" id="confirm" class="input" required />
-        <button class="btn btn-primary">SIGN UP</button>
+        <button className="btn btn-primary">SIGN UP</button>
       </form>
     </div>
   );

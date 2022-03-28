@@ -5,6 +5,10 @@
 .sign-in .btn-primary {
   background-color: black;
   border: none;
+  padding:10px;
+  color:white;
+  font: inherit;
+  font-size: 1.3rem;
 }
 
 .sign-in .btn-primary:hover {

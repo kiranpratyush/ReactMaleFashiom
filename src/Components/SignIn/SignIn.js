@@ -9,7 +9,7 @@ export function SignIn() {
         <input type="email" id="Email" class="input" required />
         <label for="Password">Password</label>
         <input type="password" id="Password" class="input" required />
-        <button class="btn btn-primary">SIGN IN</button>
+        <button className="btn btn-primary">SIGN IN</button>
       </form>
     </div>
   );
