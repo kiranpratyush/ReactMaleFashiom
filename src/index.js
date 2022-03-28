@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import { BrowserRouter } from 'react-router-dom';
 import { ContextProvider } from './Contexts/DataContext';
 import { CartContextProvider } from './Contexts/CartContext';
 
@@ -10,7 +11,9 @@ ReactDOM.render(
   <React.StrictMode>
     <CartContextProvider>
       <ContextProvider>
-        <App />
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
       </ContextProvider>
     </CartContextProvider>
   </React.StrictMode>,
