@@ -18,7 +18,7 @@
   row-gap: 5px;
   margin-right: 10px;
 }
-.side-bar button {
+.side-bar__clear-filter {
   padding: 10px;
   background: none;
   font-family: inherit;

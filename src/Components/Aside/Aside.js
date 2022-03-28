@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { FilterByRating } from '../FilterByRating/FilterByRating';
 import './style.css';
 import { useDataContext } from '../../Contexts/DataContext';
 import { Category } from '../Category/Category';
@@ -12,8 +13,9 @@ export function Aside() {
         <Category data={state.categories} />
         <SortByPrice />
         <Slider />
+        <FilterByRating />
       </div>
-      <button
+      <button className ="side-bar__clear-filter"
         onClick={() => {
           dispatch({ type: 'CLEAR_FILTER' });
         }}

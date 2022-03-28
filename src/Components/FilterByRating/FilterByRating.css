@@ -1,0 +1,16 @@
+.filter__rating {
+  display: flex;
+  flex-direction: column;
+}
+
+.filter__rating button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.filter__rating button div {
+  padding: 0px;
+  transform: translateX(-30px);
+}
