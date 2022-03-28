@@ -1,6 +1,21 @@
-import React from "react"
-import ReactDOM from "react-dom"
-import App from "./App"
-const div = document.querySelector("#root")
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+import { BrowserRouter } from 'react-router-dom';
+import { ContextProvider } from './Contexts/DataContext';
+import { CartContextProvider } from './Contexts/CartContext';
 
-ReactDOM.render(<App/>,div)
+const div = document.querySelector('#root');
+
+ReactDOM.render(
+  <React.StrictMode>
+    <CartContextProvider>
+      <ContextProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </ContextProvider>
+    </CartContextProvider>
+  </React.StrictMode>,
+  div
+);
