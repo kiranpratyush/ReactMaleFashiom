@@ -1,16 +1,23 @@
 .filter__rating {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  gap:10px
 }
 
 .filter__rating button {
-  background: none;
+ background: none;
   border: none;
   padding: 0;
   cursor: pointer;
-}
+  font:inherit;
+  vertical-align: middle;
+  font-weight:bold;
 
-.filter__rating button div {
-  padding: 0px;
-  transform: translateX(-30px);
+}
+.filter__rating button:hover{
+    border-bottom: 1px solid red;
+}
+.starticon{
+    vertical-align: middle;
 }

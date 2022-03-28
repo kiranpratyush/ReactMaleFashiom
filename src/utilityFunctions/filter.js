@@ -21,7 +21,10 @@ function filterByCategoryList(categoryList, data) {
 function filterByPriceRange(range, data) {
   return data.filter((element) => element.price >= range);
 }
-
+function filterByRating(rating,data)
+{
+  return data.filter(element=>element.rating>=rating)
+}
 export function filter(state, filterList) {
   let newData = [...state.data];
   for (let filter in filterList) {
@@ -39,6 +42,10 @@ export function filter(state, filterList) {
     }
     if (filter === 'range') {
       newData = filterByPriceRange(parseInt(filterList[filter]), newData);
+    }
+    if(filter==="ratings")
+    {
+      newData = filterByRating(filterList[filter],newData)
     }
   }
   console.log(newData)

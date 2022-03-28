@@ -28,9 +28,10 @@ export function reducerfn(previousState, {type,payload}) {
     case "FILTER_BY_PRICE_RANGE":
       console.log(previousState)
       return filter(previousState,{...previousState.filter,range:payload.value})
-      
+    case "FILTER_BY_RATINGS":
+      return filter(previousState,{...previousState.filter,ratings:payload.value})
     case "CLEAR_FILTER":
-      return {...previousState,filteredData:[],filter:{category:[],price:"NONE",range:0}}
+      return {...previousState,filteredData:[],filter:{category:[],price:"NONE",range:0,ratings:0}}
     
 
     default:
