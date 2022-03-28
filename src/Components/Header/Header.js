@@ -1,11 +1,12 @@
 import React from 'react';
 import logo from '../../Assets/logo.png';
+import {NavLink} from "react-router-dom"
 import './Header.css';
 import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import { useCartContext } from '../../Contexts/CartContext';
 export function Header() {
-  const {state} = useCartContext()
+  const { state } = useCartContext();
   return (
     <>
       <header>
@@ -20,15 +21,20 @@ export function Header() {
             <img src={logo} alt="Male Fashion Logo" />
           </div>
           <nav className="first-nav">
-            <a href="https://www.google.com" class="btn-link">
+            <NavLink to="/" className="btn-link">
               Home
-            </a>
-            <a href="https://www.google.com">Shop</a>
+            </NavLink>
+            <NavLink to="/shop" className='btn-link'>Shop</NavLink>
           </nav>
           <nav className="second-nav">
-            <button className='cart__button'><LocalMallOutlinedIcon/><span>{state.data.length}</span></button>
-            <button className='cart__button'><FavoriteBorderOutlinedIcon/><span>{state.wishList.length}</span></button>
-
+            <NavLink to ="/cart" className="cart__button">
+              <LocalMallOutlinedIcon />
+              <span>{state.data.length}</span>
+            </NavLink>
+            <NavLink to ="/wishlist"className="cart__button">
+              <FavoriteBorderOutlinedIcon />
+              <span>{state.wishList.length}</span>
+            </NavLink>
           </nav>
         </div>
       </header>

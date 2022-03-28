@@ -2,7 +2,7 @@ import React from 'react';
 import { FilterByRating } from '../FilterByRating/FilterByRating';
 import './style.css';
 import { useDataContext } from '../../Contexts/DataContext';
-import { Category } from '../Category/Category';
+import { Category } from '../Category/Category.js';
 import { SortByPrice } from '../Filter/SortByPrice';
 import { Slider } from '../Filter/PriceRange';
 export function Aside() {
