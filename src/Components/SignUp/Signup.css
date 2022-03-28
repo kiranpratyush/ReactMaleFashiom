@@ -1,0 +1,18 @@
+.form-signup {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.sign-up {
+  width: 100%;
+}
+
+.sign-up .btn-primary {
+  background-color: black;
+  border: none;
+}
+
+.sign-up label {
+  font-size: 1.2rem;
+  font-weight: 400;
+}
