@@ -1,9 +1,19 @@
 import React from 'react';
-import HomePage from './Pages/HomePage';
-
+import {Routes,Route} from "react-router-dom"
+import HomePage from "./Pages/HomePage"
+import ShopPage from './Pages/ShopPage';
+// import { CartPage } from './Pages/CartPage';
+// import { WishListPage } from './Pages/WishListPage';
 export default function App() {
+
   return (
-    <HomePage/>
-    
-  );
+
+    <Routes>
+      <Route path ="/" element ={<HomePage/>}></Route>
+      <Route path ="/shop" element ={<ShopPage/>}></Route>
+      {/* <Route  path="/cart" element ={<CartPage />}></Route>
+      <Route path ="/wishlist" element ={<WishListPage/>}></Route> */}
+    </Routes>
+  )
+
 }

@@ -1,0 +1,15 @@
+.content-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  padding-bottom: 10px;
+  flex-grow: 2;
+}
+@media (max-width: 1300px) {
+  .content-container {
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
+  }
+  .main-container {
+    flex-wrap: wrap;
+  }
+}

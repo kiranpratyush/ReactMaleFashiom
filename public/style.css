@@ -36,7 +36,10 @@ body {
 a {
   text-decoration: none;
 }
-
+main{
+  flex-grow: 1;
+  padding:0 100px;
+}
 @media screen and (max-width: 550px) {
   body {
     font-size: 1.2rem;
