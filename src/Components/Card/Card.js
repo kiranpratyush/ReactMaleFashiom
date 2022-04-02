@@ -1,6 +1,6 @@
 import React from 'react';
-import './style.css';
-import { Rating } from '../Rating/Rating';
+import './style.css'
+import {Rating} from "../Rating/Rating"
 import FavoriteOutlinedIcon from '@mui/icons-material/FavoriteOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import { useCartContext } from '../../Contexts/CartContext';
