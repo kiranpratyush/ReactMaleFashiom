@@ -8,17 +8,17 @@
 
 .cartempy__middle{
   display: flex;
-   justify-content: center
+  justify-content: center;
+
 }
 .cartpage__header {
   padding: 15px 100px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   
   background-color: #f3f2ee;
 }
 .cartpage__header span{
-    transform: translateX(50px);
     font-size: 1.2rem;
     font-weight: bold;
 }

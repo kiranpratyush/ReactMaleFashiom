@@ -16,7 +16,7 @@ export function CartPage() {
       <div
         className={
           state.data.length === 0
-            ? 'cartcontainer cartempy__middle'
+            ?  'cartempy__middle'
             : 'cartcontainer'
         }
       >
