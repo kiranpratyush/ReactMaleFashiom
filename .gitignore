@@ -14,12 +14,14 @@
 /src/Components/MainContainer/*
 /src/Components/Rating/*
 /src/Contexts/* 
+!/src/Contexts/AuthContext.js
 /src/Pages/*
 !/src/Pages/SignInPage/*
 
 /src/utilityFunctions/*
 
 /src/fire*
+!/src/fireBaseAuth.js
 /src/get*
 /src/Assets/*
 
