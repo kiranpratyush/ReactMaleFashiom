@@ -2,6 +2,7 @@ import { auth } from './firebase';
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signOut
 } from 'firebase/auth';
 
 async function signUp(email, password) {
@@ -27,5 +28,12 @@ async function signIn(email, password) {
     throw error;
   }
 }
-
-export { signIn, signUp };
+async function signOutUser()
+{
+    try{ await signOut(auth)}
+    catch(error)
+    {
+        throw error
+    }
+}
+export { signIn, signUp,signOutUser };
