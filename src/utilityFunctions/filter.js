@@ -10,40 +10,44 @@ function filterByHighToLow(data) {
   return filterdData;
 }
 function filterByCategoryList(categoryList, data) {
-  const filteredData = [];
-
-  for (let item in categoryList) {
-    if (categoryList[item]) {
-      console.log(data);
-      const x = data.find((element) => element.category === item);
-      if (x !== undefined) {
-        filteredData.push(x);
-      }
-    }
+  let filteredData = []
+  for(const category of categoryList)
+  { 
+    filteredData =[...filteredData,...data.filter(element=>element.category===category)]
   }
-  return filteredData.length > 0 ? filteredData : data;
+  return filteredData.length>0?filteredData:data;
 }
 
 function filterByPriceRange(range, data) {
   return data.filter((element) => element.price >= range);
 }
-
-export function filter(initialData, filterListValue) {
-  let newData = [...initialData.data];
-  for (let i = 0; i < filterListValue.length; i++) {
-    if (filterListValue[i].category === 'CATAEGORY') {
-      newData = filterByCategoryList(filterListValue[i].data, newData);
+function filterByRating(rating,data)
+{
+  return data.filter(element=>element.rating>=rating)
+}
+export function filter(state, filterList) {
+  let newData = [...state.data];
+  for (let filter in filterList) {
+    if (filter === 'category') {
+      newData = filterByCategoryList(filterList[filter], newData);
+      console.log(newData)
     }
-    if (filterListValue[i].category === 'slider') {
-      newData = filterByPriceRange(filterListValue[i].data, newData);
+    if (filter === 'price') {
+      if (filterList[filter] === 'ASC') {
+        newData = filterByLowToHigh(newData);
+      } else if (filterList[filter] === 'DESC') {
+        newData = filterByHighToLow(newData);
+      }
+      console.log(newData)
     }
-    if (filterListValue[i].category === 'LOWTOHIGH') {
-      newData = filterByLowToHigh(newData);
+    if (filter === 'range') {
+      newData = filterByPriceRange(parseInt(filterList[filter]), newData);
     }
-    if (filterListValue[i].category === 'HIGHTOLOW') {
-      newData = filterByHighToLow(newData);
+    if(filter==="ratings")
+    {
+      newData = filterByRating(filterList[filter],newData)
     }
   }
-
-  return newData;
+  console.log(newData)
+  return { ...state, filteredData: newData, filter: filterList };
 }

@@ -1,16 +1,27 @@
 import React from 'react';
+import { FilterByRating } from '../FilterByRating/FilterByRating';
 import './style.css';
 import { useDataContext } from '../../Contexts/DataContext';
-import { Category } from '../Category/Category';
+import { Category } from '../Category/Category.js';
 import { SortByPrice } from '../Filter/SortByPrice';
 import { Slider } from '../Filter/PriceRange';
 export function Aside() {
-  const {state} = useDataContext()
+  const { state, dispatch } = useDataContext();
   return (
-    <aside className='side-bar'>
-      <Category data={state.categories} />
-      <SortByPrice />
-      <Slider />
+    <aside className="side-bar">
+      <div className='side-bar__container'>
+        <Category data={state.categories} />
+        <SortByPrice />
+        <Slider />
+        <FilterByRating />
+      </div>
+      <button className ="side-bar__clear-filter"
+        onClick={() => {
+          dispatch({ type: 'CLEAR_FILTER' });
+        }}
+      >
+        Clear filter
+      </button>
     </aside>
   );
 }

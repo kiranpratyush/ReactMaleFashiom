@@ -4,19 +4,18 @@ import './style.css';
 import { useDataContext } from '../../Contexts/DataContext';
 export function ContentContainer() {
   const { state } = useDataContext();
-  const data = state.data
-  console.log(data)
+  const data = state.filteredData.length>0?state.filteredData:state.data
   return (
     <>
       <div className="content-container">
-        {data.map((element) => (
+        {data.map(({id,itemName,price,image,rating}) => (
           <Card
-            id ={element.id}
-            itemName={element.itemName}
-            price={element.price}
-            key={element.id}
-            image={element.image}
-            rating ={element.rating}
+            id ={id}
+            itemName={itemName}
+            price={price}
+            key={id}
+            image={image}
+            rating ={rating}
           />
         ))}
       </div>
