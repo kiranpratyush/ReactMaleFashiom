@@ -5,6 +5,11 @@
   flex-wrap: wrap;
   max-width: 1300px;
 }
+
+.cartempy__middle{
+  display: flex;
+   justify-content: center
+}
 .cartpage__header {
   padding: 15px 100px;
   display: flex;
