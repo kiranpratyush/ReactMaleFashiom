@@ -7,7 +7,8 @@ import {
 async function signUp(email, password) {
   try {
     const user = await createUserWithEmailAndPassword(auth, email, password);
-    const userName = user.user;
+    console.log(user)
+    const userName = user.user.uid;
     return userName;
   } catch (error) {
     const errorCode = error.code;
@@ -18,9 +19,11 @@ async function signUp(email, password) {
 async function signIn(email, password) {
   try {
     const user = await signInWithEmailAndPassword(auth, email, password);
-    const userName = user.user;
+    console.log(user.user.uid)
+    const userName = user.user.uid;
     return userName;
   } catch (error) {
+    console.log(error)
     throw error;
   }
 }

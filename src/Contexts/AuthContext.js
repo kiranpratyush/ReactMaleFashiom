@@ -1,7 +1,7 @@
 import React, { useContext, createContext, useEffect } from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../firebase';
-import { signIn, signUp } from '../fireBaseAuth';
+
 
 const AuthContext = createContext();
 
@@ -12,18 +12,6 @@ function reducerfn(previousState, action) {
       newStateSetUser['user'] = action.user;
       newStateSetUser['error'] = action.error && null;
       return newStateSetUser;
-    case 'SIGN_IN':
-      const newStateSignIn = { ...previousState };
-      signIn(action.email, action.password)
-        .then((user) => (newStateSignIn['user'] = user))
-        .catch((error) => (newStateSignIn['error'] = error));
-      return newStateSignIn;
-    case 'SIGN_UP':
-      const newStateSignUp = { ...previousState };
-      signUp(action.email, action.password)
-        .then((user) => (newStateSignUp['user'] = user))
-        .catch((error) => (newStateSignUp['error'] = error));
-      return newStateSignUp;
     default:
       return previousState;
   }
