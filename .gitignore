@@ -1,6 +1,20 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 /src/Components/Aside/*
+/src/Components/Card/*
+/src/Components/Categories/*
+/src/Components/Category/*
+/src/Components/ContentContainer/*
+/src/Components/Filter/*
+/src/Components/FilterByRating/*
+/src/Components/Footer/*
+/src/Components/Header/*
+/src/Components/HeroContainer/*
+/src/Components/Main/*
+/src/Components/MainContainer/*
+/src/Components/Rating/*
+
+
 # dependencies
 /node_modules
 /.pnp
