@@ -13,7 +13,15 @@
 /src/Components/Main/*
 /src/Components/MainContainer/*
 /src/Components/Rating/*
+/src/Contexts/* 
+/src/Pages/*
+!/src/Pages/SignInPage/*
 
+/src/utilityFunctions/*
+
+/src/fire*
+/src/get*
+/src/Assets/*
 
 # dependencies
 /node_modules
