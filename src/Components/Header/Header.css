@@ -18,6 +18,16 @@ header {
   display: flex;
   gap: 20px;
 }
+.header-top nav button{
+  background:none;
+  color:white;
+  cursor:pointer;
+  border:none;
+  font:inherit;
+  border-bottom: 2px solid white;
+
+}
+
 .header-bottom {
   display: flex;
   justify-content: space-between;
