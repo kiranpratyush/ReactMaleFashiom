@@ -16,6 +16,7 @@ export function Card({ id, itemName, price, image, rating }) {
     dispatch({
       type: 'ADD_TO_CART',
       payload: { data: [{ id, itemName, price, image ,quantity:1 }] },
+
     });
   }
   function handleAddToWishList() {
@@ -37,7 +38,8 @@ export function Card({ id, itemName, price, image, rating }) {
         )}
       </button>
       <div className="card-animated-body">
-        <button className="btn btn-link cart" onClick={handleAddToCart}>
+
+        <button className="btn btn-link cart" onClick={handleAddToCart} disabled ={isPresentInCart}>
           {isPresentInCart ? 'Go to cart' : 'Add to cart'}
         </button>
 
