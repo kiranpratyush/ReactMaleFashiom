@@ -27,7 +27,7 @@ function useAuthContext() {
       }
     });
     return unsubscribe;
-  }, []);
+  }, [dispatch]);
   return [state, dispatch];
 }
 function AuthContextProvider({ children }) {

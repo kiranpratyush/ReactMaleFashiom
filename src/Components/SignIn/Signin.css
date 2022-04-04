@@ -9,11 +9,17 @@
   color:white;
   font: inherit;
   font-size: 1.3rem;
+  cursor:pointer;
 }
 
 .sign-in .btn-primary:hover {
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.859);
   border: none;
+}
+.sign-in .btn-primary[disabled]
+{
+  cursor: not-allowed;
+ 
 }
 .form-signin {
   display: flex;

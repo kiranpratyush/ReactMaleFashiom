@@ -14,6 +14,15 @@
   color: white;
   font: inherit;
   font-size: 1.3rem;
+  cursor: pointer;
+}
+.sign-up .btn-primary:hover{
+  background-color: gray;
+}
+.sign-up .btn-primary[disabled]
+{
+  cursor: not-allowed;
+ 
 }
 
 .sign-up label {

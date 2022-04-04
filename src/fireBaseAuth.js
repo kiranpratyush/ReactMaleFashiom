@@ -12,8 +12,6 @@ async function signUp(email, password) {
     const userName = user.user.uid;
     return userName;
   } catch (error) {
-    const errorCode = error.code;
-    const errorMessage = error.message;
     throw error;
   }
 }

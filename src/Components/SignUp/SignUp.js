@@ -1,30 +1,42 @@
 import React, { useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Signup.css';
 import { useAuthContext } from '../../Contexts/AuthContext';
-import { signUp} from '../../fireBaseAuth';
+import { signUp } from '../../fireBaseAuth';
 export function SignUp() {
   const [state, dispatch] = useAuthContext();
-  const [error, setError] = useState('');
+  const [value, setValue] = useState('SIGN UP');
+  const [disabled, setDisabled] = useState(false);
   const nameRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();
   const confirmPasswordRef = useRef();
+  const navigate = useNavigate();
   function handleSubmit(e) {
     e.preventDefault();
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
     const confirmPassword = confirmPasswordRef.current.value;
     if (password === confirmPassword) {
+      setValue('SIGNING UP...');
+      setDisabled(true);
       signUp(email, password)
-        .then((user) => (dispatch({type:"SET_USER",user})))
-        .catch((error) => setError(error.message));
+        .then((user) => {
+          setDisabled(false);
+          setValue('SIGN UP');
+          navigate('/');
+          dispatch({ type: 'SET_USER', user });
+        })
+        .catch((error) => {
+          console.log(error);
+          setDisabled(false);
+          setValue('SIGN UP');
+        });
     } else {
-      setError('Password doesnot match');
     }
   }
 
-  return (
-    state.user==null?
+  return state.user == null ? (
     <div className="sign-up">
       <h2>SIGN UP</h2>
       <form className="form-signup" onSubmit={handleSubmit}>
@@ -64,8 +76,10 @@ export function SignUp() {
           ref={confirmPasswordRef}
           required
         />
-        <button className="btn btn-primary">SIGN UP</button>
+        <button className="btn btn-primary" disabled={disabled}>
+          {value}
+        </button>
       </form>
-    </div>:null
-  );
+    </div>
+  ) : null;
 }
