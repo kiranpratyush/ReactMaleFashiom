@@ -7,7 +7,6 @@ import { CartContextProvider } from './Contexts/CartContext';
 import { AuthContextProvider } from './Contexts/AuthContext';
 
 const div = document.querySelector('#root');
-
 ReactDOM.render(
   <React.StrictMode>
     <AuthContextProvider>

@@ -1,29 +1,20 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-/src/Components/Aside/*
-/src/Components/Card/*
-/src/Components/Categories/*
-/src/Components/Category/*
-/src/Components/ContentContainer/*
-/src/Components/Filter/*
-/src/Components/FilterByRating/*
-/src/Components/Footer/*
-/src/Components/HeroContainer/*
-/src/Components/Main/*
-/src/Components/MainContainer/*
-/src/Components/Rating/*
-/src/Contexts/* 
-!/src/Contexts/AuthContext.js
-/src/Pages/*
-!/src/Pages/SignInPage/*
-!/src/Components/SignIn
+/public/*
 
-/src/utilityFunctions/*
+/src/Components/*
+!src/Components/SignIn/Signin.css
+! /src/Components/SignUp/*
 
-/src/fire*
-!/src/fireBaseAuth.js
+/src/Components/Header/*
+/src/utility*
+/public/style.css
+/src/App.js/
+/src/fireBaseAuth.js
+/src/contexts/*
 /src/get*
 /src/Assets/*
+/src/Pages/*
 
 # dependencies
 /node_modules
@@ -46,3 +37,4 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+/src/firebase.js
