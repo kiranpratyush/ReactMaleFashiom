@@ -1,12 +1,11 @@
 import React from 'react';
-import './style.css'
-import {Rating} from "../Rating/Rating"
+import './style.css';
+import { Rating } from '../Rating/Rating';
 import FavoriteOutlinedIcon from '@mui/icons-material/FavoriteOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import { useCartContext } from '../../Contexts/CartContext';
 export function Card({ id, itemName, price, image, rating }) {
   const { state, dispatch } = useCartContext();
-  console.log(state);
   const isPresentInCart = state.data.some((element) => element.id === id);
   const isPresentInWishList = state.wishList.some(
     (element) => element.id === id
@@ -16,7 +15,8 @@ export function Card({ id, itemName, price, image, rating }) {
     
     dispatch({
       type: 'ADD_TO_CART',
-      payload: { data: [{ id, itemName, price, image }] },
+      payload: { data: [{ id, itemName, price, image ,quantity:1 }] },
+
     });
   }
   function handleAddToWishList() {
@@ -38,6 +38,7 @@ export function Card({ id, itemName, price, image, rating }) {
         )}
       </button>
       <div className="card-animated-body">
+
         <button className="btn btn-link cart" onClick={handleAddToCart} disabled ={isPresentInCart}>
           {isPresentInCart ? 'Go to cart' : 'Add to cart'}
         </button>

@@ -1,0 +1,17 @@
+.imagecontainer__image {
+  max-width: 100px;
+  max-height: 100px;
+  border-radius: 50%;
+}
+.imagecontainer {
+  display: flex;
+  align-items: center;
+  column-gap: 20px;
+  flex-wrap: wrap;
+  row-gap: 10px;
+  justify-content: center;
+}
+.imagecontainer p {
+  font-size: 1.1rem;
+  font-weight:bold
+}

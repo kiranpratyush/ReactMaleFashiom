@@ -1,0 +1,21 @@
+.quantity{
+    display: flex;
+    column-gap: 10px;
+}
+.quantity__button{
+    border:none;
+    background: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+
+}
+.quantity__input{
+    max-width:40px;
+    text-align: center;
+    border-radius: 10px;
+    border:2px solid ;
+    outline:none;
+    padding:5px;
+    font-weight: bold;
+}
