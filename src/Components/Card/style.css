@@ -1,5 +1,7 @@
 .card-imgwrapper {
   object-fit: cover;
+  max-height:376px;
+  overflow: hidden;
 }
 img {
   width: 100%;
@@ -15,6 +17,7 @@ img {
   max-width: 460px;
   min-width: 260px;
   gap: 10px;
+  justify-content: space-between;
 }
 .card-animated h4 {
   margin-top: 20px;
