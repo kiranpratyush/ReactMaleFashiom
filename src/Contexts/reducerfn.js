@@ -10,9 +10,9 @@ export function reducerfn(previousState, {type,payload}) {
           {
             id: payload.id,
             itemName: payload.title,
-            price: payload.price,
+            price: Number.parseFloat(payload.price),
             image: payload.image,
-            category: payload.category,
+            category: payload.category.toLowerCase(),
             rating: Number.parseInt(payload.rating),
           },
         ],
