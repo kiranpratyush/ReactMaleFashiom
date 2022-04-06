@@ -29,6 +29,7 @@ export function CartPage() {
                 price={element.price}
                 quantity={element.quantity}
                 id={element.id}
+                image={element.image}
               />
             ))
           ) : (

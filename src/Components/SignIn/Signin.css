@@ -1,0 +1,30 @@
+.sign-in label {
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+.sign-in .btn-primary {
+  background-color: black;
+  border: none;
+  padding:10px;
+  color:white;
+  font: inherit;
+  font-size: 1.3rem;
+  cursor:pointer;
+}
+
+.sign-in .btn-primary:hover {
+  background-color: rgba(0, 0, 0, 0.859);
+  border: none;
+}
+.sign-in .btn-primary[disabled]
+{
+  cursor: not-allowed;
+ 
+}
+.form-signin {
+  display: flex;
+  flex-direction: column;
+}
+.sign-in {
+  width: 100%;
+}

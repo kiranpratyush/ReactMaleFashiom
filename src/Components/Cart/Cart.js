@@ -8,6 +8,7 @@ import { Quantity } from './Quantity';
 import sample from '../../Assets/img5.webp';
 export function Cart({id,itemName,price,image,quantity}) {
  const {dispatch} = useCartContext()
+ console.log(image)
  function handleMoveToWhishlist()
  {dispatch({type:"MOVE_TO_WISHLIST",payload:{data:[{id}]}})
  }
@@ -18,7 +19,7 @@ export function Cart({id,itemName,price,image,quantity}) {
  }
   return (
     <div className="cart">
-      <ImageContainer image={image||sample} title={itemName} />
+      <ImageContainer image={image} title={itemName} />
       <Quantity quantity={quantity} id ={id} />
       <span>${price}</span>
       <button className='cart__close' onClick ={handleMoveToWhishlist}><FavoriteBorderOutlinedIcon /></button>

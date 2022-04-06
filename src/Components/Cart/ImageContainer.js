@@ -1,9 +1,9 @@
-import image from "../../Assets/img5.webp"
+
 import React from "react"
 import "./ImageContainer.css"
 
 
-export function ImageContainer({title})
+export function ImageContainer({title,image})
 {
 
 

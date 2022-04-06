@@ -1,7 +1,8 @@
-import { collection, getDocs} from 'firebase/firestore';
+import { collection, getDocs,doc, setDoc} from 'firebase/firestore';
 import { db } from './firebase';
 import { getStorage, ref, getDownloadURL } from 'firebase/storage';
 const productsRef = collection(db, 'Products');
+
 const storage = getStorage()
 
 async function getData(){
@@ -25,4 +26,22 @@ async function getData(){
     const array =  await updatedProductArray
     return array
 }
-export {getData}
+
+async function setCart(userId,data)
+{
+  const userRef = doc(db,`users/${userId}/cart/${data.id}`)
+  await setDoc(userRef,{itemName:data.itemName,price:data.price,image:data.image,quantity:data.quantity,id:data.id})
+}
+
+async function getCart(userId)
+{
+ const userRef = collection(db,`users/${userId}/cart`)
+ const querySnapShot  = await getDocs(userRef)
+ const data =[]
+ querySnapShot.forEach(doc=>
+  {
+    data.push(doc.data())
+  })
+  return data
+}
+export {getData,getCart,setCart}

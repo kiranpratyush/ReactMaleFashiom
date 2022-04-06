@@ -1,11 +1,19 @@
 
-import React, { createContext, useContext, useReducer } from 'react';
+import React, { createContext, useContext, useEffect, useReducer } from 'react';
+import { getCart, setCart } from '../getData';
+import { useAuthContext } from './AuthContext';
 
 const CartContext = createContext();
 
 function reducerfn(previousState, action) {
   switch (action.type) {
+    case "INITIALIZE_DATA":
+        const array = action.data
+        console.log(array)
+        return {...previousState,data:[...previousState.data,...array]}
+
     case 'ADD_TO_CART':
+
       return {
         ...previousState,
         data: [...previousState.data, ...action.payload.data],
@@ -75,10 +83,29 @@ function useCartContext() {
   return { state, dispatch };
 }
 function CartContextProvider({ children }) {
+  const [user] = useAuthContext()
   const [state, dispatch] = useReducer(reducerfn, {
-    data: [{ itemName: 'shoe', price: 20, quantity: 1, id: 1 }],
+    data: [],
     wishList: [{ itemName: 'shoe', price: 20, quantity: 1, id: 1 }],
   });
+  useEffect(()=>{
+
+    // if(!user.user)
+    // {
+    //     return
+    // }
+    getCart(1)
+    .then(arr=>dispatch({type:"INITIALIZE_DATA",data:arr}))
+
+
+  },[])
+  useEffect(()=>
+  {
+    for(let data of state.data)
+    {
+        setCart(1,data)
+    }
+  },[state.data])
   return (
     <CartContext.Provider value={{ state, dispatch }}>
       {children}
