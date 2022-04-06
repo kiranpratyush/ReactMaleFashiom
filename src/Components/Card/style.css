@@ -1,0 +1,84 @@
+.card-imgwrapper {
+  object-fit: cover;
+}
+img {
+  width: 100%;
+}
+.card-animated {
+  --color-card: red;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  border-radius: 0.25rem;
+  line-height: 1.25;
+  max-width: 460px;
+  min-width: 260px;
+  gap: 10px;
+  
+}
+.card-animated h4 {
+  margin-top: 20px;
+}
+.card-animated button{
+  top:0;
+  right:0;
+  background:none;
+  position: relative;
+  border:none;
+  cursor:pointer;
+
+}
+
+
+
+.card-animated h5 {
+  font-size: 1.3rem;
+  visibility: visible;
+  opacity: 1;
+  transition: all 0.2s;
+}
+.card-animated:hover h5 {
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.2s;
+}
+.card-animated .icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  opacity: 0;
+  transition: opacity 0.6s;
+}
+.card-animated:hover .icon {
+  opacity: 1;
+  transition: all 0.6s;
+}
+.card-animated i {
+  font-size: 2rem;
+}
+.card-animated:hover .cart {
+  opacity: 1;
+  transform: translateY(29px);
+  display: inline-block;
+  transition: all 0.6s;
+  color: var(--color-card);
+  font-weight: 700;
+  text-decoration: none;
+}
+.card-animated .cart {
+  color: var(--color-card);
+  font-weight: 700;
+  opacity: 0;
+  display: inline-block;
+  transform: translateY(0px);
+  transition: all 0.6s;
+}
+
+.hearticon{
+  color:red;
+  font-size: large;
+}
+.heartoutlineicon{
+  font-size: large;
+}

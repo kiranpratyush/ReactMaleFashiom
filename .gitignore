@@ -1,21 +1,4 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-/public/*
-
-/src/Components/*
-!src/Components/SignIn/Signin.css
-! /src/Components/SignUp/*
-
-/src/Components/Header/*
-/src/utility*
-/public/style.css
-/src/App.js/
-/src/fireBaseAuth.js
-/src/contexts/*
-/src/get*
-/src/Assets/*
-/src/Pages/*
-
 # dependencies
 /node_modules
 /.pnp

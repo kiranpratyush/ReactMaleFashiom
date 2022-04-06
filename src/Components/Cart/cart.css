@@ -1,0 +1,28 @@
+.cart {
+  display: flex;
+  align-items: center;
+  column-gap: 40px;
+  padding: 20px;
+}
+.cart span {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.cart__close {
+  background: none;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.cart__close .close__icon {
+  font-size: medium;
+}
+
+@media screen and (max-width: 550px) {
+  .cart {
+    padding: 10px;
+    column-gap: 30px;
+  }
+}
