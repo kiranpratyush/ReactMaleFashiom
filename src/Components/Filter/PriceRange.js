@@ -22,7 +22,7 @@ export function Slider() {
       onChange={handleChange}
     />
     </div>
-    <span>{state.filter.range}</span>
+    <span>{state.filter.range>0?`Price less than ${state.filter.range}`:null}</span>
     </nav>
   );
 }

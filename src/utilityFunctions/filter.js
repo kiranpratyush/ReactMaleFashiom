@@ -19,7 +19,8 @@ function filterByCategoryList(categoryList, data) {
 }
 
 function filterByPriceRange(range, data) {
-  return data.filter((element) => element.price >= range);
+  console.log(data,range)
+  return data.filter((element) => element.price <= range);
 }
 function filterByRating(rating,data)
 {
