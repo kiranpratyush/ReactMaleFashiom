@@ -1,0 +1,31 @@
+.form-signup {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.sign-up {
+  width: 100%;
+}
+
+.sign-up .btn-primary {
+  background-color: black;
+  border: none;
+  padding: 10px;
+  color: white;
+  font: inherit;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+.sign-up .btn-primary:hover{
+  background-color: gray;
+}
+.sign-up .btn-primary[disabled]
+{
+  cursor: not-allowed;
+ 
+}
+
+.sign-up label {
+  font-size: 1.2rem;
+  font-weight: 400;
+}
