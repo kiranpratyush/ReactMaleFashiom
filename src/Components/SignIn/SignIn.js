@@ -16,15 +16,15 @@ export function SignIn() {
     const password = passwordRef.current.value;
     signIn(email, password)
       .then((user) => {
-        setValue('SIGN IN');
-        setDisabled(false);
+        setValue("SIGN IN")
+        setDisabled(false)
         dispatch({ type: 'SET_USER', user });
       })
       .catch((error) => {
-        setValue('SIGN IN');
-        setDisabled(false);
-        dispatch({ type: 'SET_USER', error });
-      });
+      setValue("SIGN IN")
+      setDisabled(false)
+      dispatch({ type: 'SET_USER', error })}
+      );
     emailRef.current.value = '';
     passwordRef.current.value = '';
   }

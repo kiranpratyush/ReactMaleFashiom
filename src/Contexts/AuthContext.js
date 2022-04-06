@@ -1,7 +1,6 @@
 import React, { useContext, createContext, useEffect } from 'react';
-import { onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../firebase';
-
 const AuthContext = createContext();
 
 function reducerfn(previousState, action) {
