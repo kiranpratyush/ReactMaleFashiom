@@ -1,7 +1,9 @@
 // Helper function to filter By category List
 function filterByLowToHigh(data) {
+  console.log(data)
   const filteredData = [...data];
   filteredData.sort((item1, item2) => item1.price - item2.price);
+  console.log(filteredData)
   return filteredData;
 }
 function filterByHighToLow(data) {
@@ -19,7 +21,10 @@ function filterByCategoryList(categoryList, data) {
 }
 
 function filterByPriceRange(range, data) {
-  console.log(data,range)
+  if(range<=0)
+  {
+    return data
+  }
   return data.filter((element) => element.price <= range);
 }
 function filterByRating(rating,data)
