@@ -22,7 +22,6 @@ async function signIn(email, password) {
     const userName = user.user.uid;
     return userName;
   } catch (error) {
-    console.log(error);
     throw error;
   }
 }
