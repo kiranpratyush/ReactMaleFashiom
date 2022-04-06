@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
-import { useAuthContext } from '../../Contexts/AuthContext';
-import { signIn } from '../../fireBaseAuth';
+import { useAuthContext } from '../../export';
+import { signIn } from '../../export';
 import './Signin.css';
 export function SignIn() {
   const [state, dispatch] = useAuthContext();
@@ -16,15 +16,15 @@ export function SignIn() {
     const password = passwordRef.current.value;
     signIn(email, password)
       .then((user) => {
-        setValue("SIGN IN")
-        setDisabled(false)
+        setValue('SIGN IN');
+        setDisabled(false);
         dispatch({ type: 'SET_USER', user });
       })
       .catch((error) => {
-      setValue("SIGN IN")
-      setDisabled(false)
-      dispatch({ type: 'SET_USER', error })}
-      );
+        setValue('SIGN IN');
+        setDisabled(false);
+        dispatch({ type: 'SET_USER', error });
+      });
     emailRef.current.value = '';
     passwordRef.current.value = '';
   }
@@ -51,7 +51,9 @@ export function SignIn() {
           ref={passwordRef}
           required
         />
-        <button className="btn btn-primary" disabled ={disabled}>{value}</button>
+        <button className="btn btn-primary" disabled={disabled}>
+          {value}
+        </button>
       </form>
     </div>
   ) : (

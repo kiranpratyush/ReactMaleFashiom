@@ -8,10 +8,7 @@ export function CategoryName({ className, title, image }) {
         <a href="#">Shop Now</a>
       </div>
       <div className="category__image">
-        <img
-          src={image}
-          alt="{title}"
-        />
+        <img src={image} alt="{title}" />
       </div>
     </div>
   );

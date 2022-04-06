@@ -1,11 +1,11 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import HomePage from './Pages/HomePage';
-import ShopPage from './Pages/ShopPage';
-import { SignInPage } from './Pages/SignInPage/SignInPage';
-import { CartPage } from './Pages/CartPage';
-import { WishListPage } from './Pages/WishListPage';
-import { RequireAuth } from './Components/RequireAuth/RequireAuth';
+import { HomePage } from './export';
+import { ShopPage } from './export';
+import { SignInPage } from './export';
+import { CartPage } from './export';
+import { WishListPage } from './export';
+import { RequireAuth } from './export';
 export default function App() {
   return (
     <Routes>

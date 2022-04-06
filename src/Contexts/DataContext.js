@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useReducer } from 'react';
 import { createContext } from 'react';
-import { getData } from '../getData';
-import { reducerfn } from './reducerfn';
+import { getData } from '../export';
+import { reducerfn } from '../export';
 const dataContext = createContext();
 
 function ContextProvider({ children }) {
@@ -10,7 +10,12 @@ function ContextProvider({ children }) {
       dispatch({ type: 'SET_DATA', payload: element[0] });
     });
   }
-  const [state, dispatch] = useReducer(reducerfn, { data: [],filteredData:[],categories:["shoe","tshirt","bag"],filter:{category :[],price:"NONE",range:0}});
+  const [state, dispatch] = useReducer(reducerfn, {
+    data: [],
+    filteredData: [],
+    categories: ['shoe', 'tshirt', 'bag'],
+    filter: { category: [], price: 'NONE', range: 0 },
+  });
   useEffect(() => {
     getData().then((arr) => setData(arr));
   }, []);

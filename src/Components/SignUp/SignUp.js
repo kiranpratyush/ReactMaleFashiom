@@ -1,8 +1,8 @@
 import React, { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Signup.css';
-import { useAuthContext } from '../../Contexts/AuthContext';
-import { signUp } from '../../fireBaseAuth';
+import { useAuthContext } from '../../export';
+import { signUp } from '../../export';
 export function SignUp() {
   const [state, dispatch] = useAuthContext();
   const [value, setValue] = useState('SIGN UP');
