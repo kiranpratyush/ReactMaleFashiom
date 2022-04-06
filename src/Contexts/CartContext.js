@@ -1,6 +1,6 @@
 
 import React, { createContext, useContext, useEffect, useReducer } from 'react';
-import { getCart, setCart } from '../getData';
+import { getCart, setCart ,getWishList,setWishList} from '../getData';
 import { useAuthContext } from './AuthContext';
 
 const CartContext = createContext();
@@ -8,10 +8,9 @@ const CartContext = createContext();
 function reducerfn(previousState, action) {
   switch (action.type) {
     case "INITIALIZE_DATA":
-        const array = action.data
-        console.log(array)
-        return {...previousState,data:[...previousState.data,...array]}
-
+        return {...previousState,data:[...previousState.data,...action.data]}
+    case "INITIALIZE_WISHLIST":
+        return {...previousState,wishList:[...previousState.wishList,...action.data]}
     case 'ADD_TO_CART':
 
       return {
@@ -90,22 +89,37 @@ function CartContextProvider({ children }) {
   });
   useEffect(()=>{
 
-    // if(!user.user)
-    // {
-    //     return
-    // }
-    getCart(1)
+    if(!user.user)
+    {
+        return
+    }
+    getCart(user.user)
     .then(arr=>dispatch({type:"INITIALIZE_DATA",data:arr}))
+    getWishList(user.user)
+    .then(arr=>dispatch({type:"INITIALIZE_WISHLIST",data:arr}))
 
 
   },[])
   useEffect(()=>
-  {
+  { if(!user.user)
+    {
+        return
+    }
     for(let data of state.data)
     {
-        setCart(1,data)
+        setCart(user.user,data)
     }
-  },[state.data])
+  },[state.data,user.user])
+  useEffect(()=>
+  { if(!user.user)
+    {
+        return
+    }
+    for(let data of state.wishList)
+    {
+        setWishList(user.user,data)
+    }
+  },[state.wishList,user.user])
   return (
     <CartContext.Provider value={{ state, dispatch }}>
       {children}

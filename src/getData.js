@@ -44,4 +44,21 @@ async function getCart(userId)
   })
   return data
 }
-export {getData,getCart,setCart}
+async function getWishList(userId)
+{
+ const userRef = collection(db,`users/${userId}/wishlist`)
+ const querySnapShot  = await getDocs(userRef)
+ const data =[]
+ querySnapShot.forEach(doc=>
+  {
+    data.push(doc.data())
+  })
+  return data
+}
+async function setWishList(userId,data)
+{
+  const userRef = doc(db,`users/${userId}/cart/${data.id}`)
+  await setDoc(userRef,{itemName:data.itemName,price:data.price,image:data.image,id:data.id})
+}
+
+export {getData,getCart,setCart,getWishList,setWishList}

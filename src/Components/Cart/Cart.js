@@ -5,7 +5,6 @@ import { useCartContext } from '../../Contexts/CartContext';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import CloseIcon from '@mui/icons-material/Close';
 import { Quantity } from './Quantity';
-import sample from '../../Assets/img5.webp';
 export function Cart({id,itemName,price,image,quantity}) {
  const {dispatch} = useCartContext()
  console.log(image)
