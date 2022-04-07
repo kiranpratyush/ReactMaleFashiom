@@ -33,7 +33,7 @@ function AuthContextProvider({ children }) {
     user: null,
     error: null,
   });
-
+  console.log(state)
   return (
     <AuthContext.Provider value={{ state, dispatch }}>
       {children}

@@ -6,11 +6,13 @@ import {
   setWishList,
   useAuthContext,
 } from '../export';
+import { deleteCart, deleteWishList } from '../getData';
 const CartContext = createContext();
 
 function reducerfn(previousState, action) {
   switch (action.type) {
     case 'INITIALIZE_DATA':
+      console.log(action.data);
       return {
         ...previousState,
         data: [...previousState.data, ...action.data],
@@ -21,36 +23,37 @@ function reducerfn(previousState, action) {
         wishList: [...previousState.wishList, ...action.data],
       };
     case 'ADD_TO_CART':
-      console.log(action.payload.data)
+      setCart(action.payload.user, action.payload.data[0]);
       return {
         ...previousState,
         data: [...previousState.data, ...action.payload.data],
       };
 
     case 'ADD_TO_WISHLIST':
+      setWishList(action.payload.user, action.payload.data[0]);
       return {
         ...previousState,
         wishList: [...previousState.wishList, ...action.payload.data],
       };
     case 'MOVE_TO_WISHLIST':
-      console.log(previousState.data,action.payload.id)
       const wishListdata = previousState.data.filter(
         (element) => element.id === action.payload.id
       );
+      setWishList(action.payload.user, wishListdata[0]);
       const cartData = previousState.data.filter(
         (element) => element.id !== action.payload.id
       );
-      console.log(wishListdata)
+      console.log(wishListdata);
       return {
         ...previousState,
         wishList: [...previousState.wishList, ...wishListdata],
         data: [...cartData],
       };
     case 'MOVE_TO_CART':
-      console.log(action.payload.id)
       const cartDataFromWishList = previousState.wishList.filter(
         (element) => element.id === action.payload.id
       );
+      setCart(action.payload.user, cartDataFromWishList[0]);
       const remainingWishListData = previousState.wishList.filter(
         (element) => element.id !== action.payload.id
       );
@@ -60,11 +63,14 @@ function reducerfn(previousState, action) {
         data: [...previousState.data, ...cartDataFromWishList],
       };
     case 'REMOVE_FROM_CART':
+      console.log("i am running")
+      deleteCart(action.payload.user, action.payload.id);
       const data = previousState.data.filter(
         (element) => element.id !== action.payload.id
       );
       return { ...previousState, data };
     case 'REMOVE_FROM_WISHLIST':
+      deleteWishList(action.payload.user, action.payload.id);
       const remainingWishListDatanew = previousState.wishList.filter(
         (element) => element.id !== action.payload.id
       );
@@ -101,32 +107,18 @@ function CartContextProvider({ children }) {
     wishList: [],
   });
   useEffect(() => {
-    if (!user.user) {
+    console.log('I am running', user);
+    if (!user?.user?.uid) {
       return;
     }
-    getCart(user.user).then((arr) =>
+    getCart(user.user.uid).then((arr) =>
       dispatch({ type: 'INITIALIZE_DATA', data: arr })
     );
-    getWishList(user.user).then((arr) =>
+    getWishList(user.user.uid).then((arr) =>
       dispatch({ type: 'INITIALIZE_WISHLIST', data: arr })
     );
-  }, []);
-  useEffect(() => {
-    if (!user.user) {
-      return;
-    }
-    for (let data of state.data) {
-      setCart(user.user, data);
-    }
-  }, [state.data, user.user]);
-  useEffect(() => {
-    if (!user.user) {
-      return;
-    }
-    for (let data of state.wishList) {
-      setWishList(user.user, data);
-    }
-  }, [state.wishList, user.user]);
+  }, [user?.user?.uid]);
+
   return (
     <CartContext.Provider value={{ state, dispatch }}>
       {children}
