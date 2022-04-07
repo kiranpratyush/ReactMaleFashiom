@@ -1,9 +1,7 @@
-import React from "react"
-import "./style.css"
-import {Card} from "../Card/Card.js"
-import {HeroContainer} from "../HeroContainer/Hero.js"
-import { useDataContext } from "../../Contexts/DataContext"
-import { Category } from "../Categories/Category"
+import React from 'react';
+import './style.css';
+import { Card } from '../../export';
+import { HeroContainer ,useDataContext,CategoryHeader} from '../../export';
 export function Main({children})
 {   const {state} = useDataContext()
     return (
@@ -28,3 +26,4 @@ export function Main({children})
         </>
     )
 }
+

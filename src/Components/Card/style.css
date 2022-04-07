@@ -27,6 +27,8 @@ img {
   right:0;
   background:none;
   position: relative;
+  border:none;
+  cursor:pointer;
 
 }
 
