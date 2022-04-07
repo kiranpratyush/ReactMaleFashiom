@@ -2,9 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
-import { ContextProvider } from './Contexts/DataContext';
-import { CartContextProvider } from './Contexts/CartContext';
-import { AuthContextProvider } from './Contexts/AuthContext';
+import {
+  ContextProvider,
+  CartContextProvider,
+  AuthContextProvider,
+} from './export';
 
 const div = document.querySelector('#root');
 ReactDOM.render(

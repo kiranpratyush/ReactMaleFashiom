@@ -1,14 +1,13 @@
-import { auth } from './firebase';
+import { auth } from './export';
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  signOut
+  signOut,
 } from 'firebase/auth';
 
 async function signUp(email, password) {
   try {
     const user = await createUserWithEmailAndPassword(auth, email, password);
-    console.log(user)
     const userName = user.user.uid;
     return userName;
   } catch (error) {
@@ -35,3 +34,4 @@ async function signOutUser()
     }
 }
 export { signIn, signUp,signOutUser };
+
