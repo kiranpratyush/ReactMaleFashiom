@@ -1,7 +1,5 @@
 import React from 'react';
-import { SignIn } from '../../Components/SignIn/SignIn';
-import { SignUp } from '../../Components/SignUp/SignUp';
-import { Header } from '../../Components/Header/Header';
+import { SignIn ,SignUp,Header} from '../../export';
 import './SignInpage.css';
 export function SignInPage() {
   return (

@@ -1,6 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { useAuthContext } from '../../Contexts/AuthContext';
-import { signIn } from '../../fireBaseAuth';
+import { useAuthContext,signIn } from '../../export';
 import './Signin.css';
 export function SignIn() {
   const [state, dispatch] = useAuthContext();
@@ -51,7 +50,9 @@ export function SignIn() {
           ref={passwordRef}
           required
         />
-        <button className="btn btn-primary" disabled ={disabled}>{value}</button>
+        <button className="btn btn-primary" disabled={disabled}>
+          {value}
+        </button>
       </form>
     </div>
   ) : (
