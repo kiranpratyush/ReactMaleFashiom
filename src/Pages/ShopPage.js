@@ -1,9 +1,12 @@
 import React from 'react';
-import { Header } from '../export';
-import { Aside } from '../export';
-import { ContentContainer } from '../export';
-import { MainContainer } from '../export';
-import { Footer } from '../export';
+import {
+  Header,
+  Aside,
+  ContentContainer,
+  MainContainer,
+  Footer,
+} from '../export';
+
 export function ShopPage() {
   return (
     <>

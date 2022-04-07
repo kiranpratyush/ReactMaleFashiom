@@ -1,9 +1,5 @@
 import React from 'react';
-import { FilterByRating } from '../../export';
-import { useDataContext } from '../../export';
-import { Category } from '../../export';
-import { SortByPrice } from '../../export';
-import { Slider } from '../../export';
+import { FilterByRating,useDataContext,Category,SortByPrice,Slider} from '../../export';
 import './style.css';
 export function Aside() {
   const { state, dispatch } = useDataContext();

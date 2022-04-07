@@ -1,9 +1,6 @@
 import React from 'react';
 import './Cartpage.css';
-import { WishList } from '../export';
-import { Header } from '../export';
-import { useCartContext } from '../export';
-import { Empty } from '../export';
+import { WishList, Header, useCartContext, Empty } from '../export';
 export function WishListPage() {
   const { state } = useCartContext();
   return (

@@ -1,9 +1,8 @@
 import React from 'react';
 import './style.css';
 import { Card } from '../../export';
-import { HeroContainer } from '../../export';
-import { useDataContext } from '../../export';
-import { CategoryHeader } from '../../export';
+import { HeroContainer ,useDataContext,CategoryHeader} from '../../export';
+
 export function Main() {
   const { state } = useDataContext();
   return (

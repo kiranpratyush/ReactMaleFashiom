@@ -2,8 +2,7 @@ import React from 'react';
 import './cart.css';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import CloseIcon from '@mui/icons-material/Close';
-import { ImageContainer } from '../../export';
-import { useCartContext } from '../../export';
+import { ImageContainer,useCartContext } from '../../export';
 
 export function WishList({ id, itemName, price, image }) {
   const { dispatch } = useCartContext();

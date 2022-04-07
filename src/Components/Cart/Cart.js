@@ -2,9 +2,7 @@ import React from 'react';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import CloseIcon from '@mui/icons-material/Close';
 import './cart.css';
-import { ImageContainer } from '../../export';
-import { useCartContext } from '../../export';
-import { Quantity } from '../../export';
+import { ImageContainer,useCartContext,Quantity } from '../../export';
 
 export function Cart({ id, itemName, price, image, quantity }) {
   const { dispatch } = useCartContext();

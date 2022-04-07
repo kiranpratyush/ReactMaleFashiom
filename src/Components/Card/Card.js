@@ -2,8 +2,7 @@ import React from 'react';
 import FavoriteOutlinedIcon from '@mui/icons-material/FavoriteOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import './style.css';
-import { Rating } from '../../export';
-import { useCartContext } from '../../export';
+import { Rating,useCartContext } from '../../export';
 export function Card({ id, itemName, price, image, rating }) {
   const { state, dispatch } = useCartContext();
   const isPresentInCart = state.data.some((element) => element.id === id);

@@ -1,11 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { HomePage } from './export';
-import { ShopPage } from './export';
-import { SignInPage } from './export';
-import { CartPage } from './export';
-import { WishListPage } from './export';
-import { RequireAuth } from './export';
+import { HomePage,ShopPage,SignInPage,CartPage,WishListPage,RequireAuth } from './export';
 export default function App() {
   return (
     <Routes>

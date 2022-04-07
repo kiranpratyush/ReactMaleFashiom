@@ -1,6 +1,5 @@
 import React from 'react';
-import { Card } from '../../export';
-import { useDataContext } from '../../export';
+import { Card,useDataContext } from '../../export';
 import './style.css';
 
 export function ContentContainer() {

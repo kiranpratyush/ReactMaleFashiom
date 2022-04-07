@@ -1,7 +1,5 @@
 import React, { createContext, useContext, useEffect, useReducer } from 'react';
-import { getCart, setCart, getWishList, setWishList } from '../export';
-import { useAuthContext } from '../export';
-
+import { getCart, setCart, getWishList, setWishList ,useAuthContext} from '../export';
 const CartContext = createContext();
 
 function reducerfn(previousState, action) {

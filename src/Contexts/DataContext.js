@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useReducer } from 'react';
 import { createContext } from 'react';
-import { getData } from '../export';
-import { reducerfn } from '../export';
+import { getData ,reducerfn} from '../export';
 const dataContext = createContext();
 
 function ContextProvider({ children }) {
