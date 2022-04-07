@@ -12,17 +12,19 @@ export function Slider() {
 
   return (
     <nav>
-      <div className="">
-        <h1>Price Range</h1>
-        <input
-          className="slider"
-          type="range"
-          min="0"
-          max="30"
-          value={state.filter.range}
-          onChange={handleChange}
-        />
-      </div>
+    <div className ="">
+    <h1>Price Range</h1>
+    <input className='slider'
+      list ="tickmarks"
+      type="range"
+      min="0"
+      max="4000"
+      step="200"
+      value ={state.filter.range}
+      onChange={handleChange}
+    />
+    </div>
+    <span>{state.filter.range>0?`Price less than ${state.filter.range}`:null}</span>
     </nav>
   );
 }

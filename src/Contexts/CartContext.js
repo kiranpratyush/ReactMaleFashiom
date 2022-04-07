@@ -83,6 +83,7 @@ function useCartContext() {
   const { state, dispatch } = useContext(CartContext);
   return { state, dispatch };
 }
+
 function CartContextProvider({ children }) {
   const [user] = useAuthContext();
   const [state, dispatch] = useReducer(reducerfn, {

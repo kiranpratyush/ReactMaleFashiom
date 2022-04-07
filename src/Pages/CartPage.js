@@ -1,7 +1,6 @@
 import React from 'react';
 import './Cartpage.css';
 import { Cart, Checkout, Header, useCartContext, Empty } from '../export';
-
 export function CartPage() {
   const { state } = useCartContext();
   return (
@@ -12,7 +11,10 @@ export function CartPage() {
       </div>
       <div
         className={
-          state.data.length === 0 ? 'cartempty__middle' : 'cartcontainer'
+
+          state.data.length === 0
+            ?  'cartempy__middle'
+            : 'cartcontainer'
         }
       >
         <div>
@@ -24,7 +26,6 @@ export function CartPage() {
                 price={element.price}
                 quantity={element.quantity}
                 id={element.id}
-                image={element.image}
               />
             ))
           ) : (
