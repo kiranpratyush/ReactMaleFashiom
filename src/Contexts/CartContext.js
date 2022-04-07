@@ -1,5 +1,11 @@
 import React, { createContext, useContext, useEffect, useReducer } from 'react';
-import { getCart, setCart, getWishList, setWishList ,useAuthContext} from '../export';
+import {
+  getCart,
+  setCart,
+  getWishList,
+  setWishList,
+  useAuthContext,
+} from '../export';
 const CartContext = createContext();
 
 function reducerfn(previousState, action) {
@@ -88,7 +94,7 @@ function CartContextProvider({ children }) {
   const [user] = useAuthContext();
   const [state, dispatch] = useReducer(reducerfn, {
     data: [],
-    wishList: [{ itemName: 'shoe', price: 20, quantity: 1, id: 1 }],
+    wishList: [],
   });
   useEffect(() => {
     if (!user.user) {

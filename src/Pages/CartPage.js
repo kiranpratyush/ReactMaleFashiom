@@ -13,7 +13,7 @@ export function CartPage() {
         className={
 
           state.data.length === 0
-            ?  'cartempy__middle'
+            ?  'cartempty__middle'
             : 'cartcontainer'
         }
       >

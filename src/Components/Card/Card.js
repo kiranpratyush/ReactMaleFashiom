@@ -40,7 +40,7 @@ export function Card({ id, itemName, price, image, rating }) {
       </button>
       <div className="card-animated-body">
         <button
-          className="btn btn-link cart"
+          className="btn btn-link addtocart"
           onClick={handleAddToCart}
           disabled={isPresentInCart}
         >
