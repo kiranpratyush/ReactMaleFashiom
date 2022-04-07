@@ -22,11 +22,24 @@
   padding: 10px;
   background: none;
   font-family: inherit;
-  border: 2px solid black;
-  background-color: black;
-  color: white;
+  border:none;
   font-size: 1.1rem;
   cursor:pointer;
+  position: relative
+}
+.side-bar__clear-filter::after{
+  position: absolute;
+  content:"";
+  top:30px;
+  left:10px;
+  height:2px;
+  width:70%;
+  background: red;
+  transition: width,0.3s;
+}
+.side-bar__clear-filter:hover::after{
+  width:40%;
+  transition: width,0.3s;
 }
 .side-bar__container {
   display: flex;

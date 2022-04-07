@@ -7,7 +7,7 @@ export function Main({children})
     return (
         <>
         <HeroContainer />
-        <Category />
+        <CategoryHeader />
         <h3 className="best-seller">Best-Seller</h3>
         <div className ="catalog-container">
         {
