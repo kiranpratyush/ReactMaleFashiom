@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { useAuthContext,signIn } from '../../export';
+import { useAuthContext, signIn } from '../../export';
 import './Signin.css';
 export function SignIn() {
   const [state, dispatch] = useAuthContext();
@@ -15,15 +15,15 @@ export function SignIn() {
     const password = passwordRef.current.value;
     signIn(email, password)
       .then((user) => {
-        setValue("SIGN IN")
-        setDisabled(false)
+        setValue('SIGN IN');
+        setDisabled(false);
         dispatch({ type: 'SET_USER', user });
       })
       .catch((error) => {
-      setValue("SIGN IN")
-      setDisabled(false)
-      dispatch({ type: 'SET_USER', error })}
-      );
+        setValue('SIGN IN');
+        setDisabled(false);
+        dispatch({ type: 'SET_USER', error });
+      });
     emailRef.current.value = '';
     passwordRef.current.value = '';
   }
@@ -46,12 +46,28 @@ export function SignIn() {
           type="password"
           id="Password23"
           className="input"
-          placeholder="Enter your password here"
+          placeholder="123456"
           ref={passwordRef}
           required
         />
         <button className="btn btn-primary" disabled={disabled}>
           {value}
+        </button>
+        <br/>
+        <button
+          className="btn btn-primary"
+          disabled={disabled}
+          onClick={() =>
+            signIn('xyz@gmail.com', '123456')
+              .then((user) => {
+                dispatch({ type: 'SET_USER', user });
+              })
+              .catch((error) => {
+                dispatch({ type: 'SET_USER', error });
+              })
+          }
+        >
+          SIGN IN AS GUEST
         </button>
       </form>
     </div>
