@@ -8,7 +8,7 @@ export function Cart({ id, itemName, price, image, quantity }) {
   const { dispatch } = useCartContext();
   console.log(image);
   function handleMoveToWhishlist() {
-    dispatch({ type: 'MOVE_TO_WISHLIST', payload: { data: [{ id }] } });
+    dispatch({ type: 'MOVE_TO_WISHLIST', payload: {  id } });
   }
 
   function handleRemoveCart() {

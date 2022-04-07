@@ -21,6 +21,7 @@ function reducerfn(previousState, action) {
         wishList: [...previousState.wishList, ...action.data],
       };
     case 'ADD_TO_CART':
+      console.log(action.payload.data)
       return {
         ...previousState,
         data: [...previousState.data, ...action.payload.data],
@@ -32,18 +33,21 @@ function reducerfn(previousState, action) {
         wishList: [...previousState.wishList, ...action.payload.data],
       };
     case 'MOVE_TO_WISHLIST':
+      console.log(previousState.data,action.payload.id)
       const wishListdata = previousState.data.filter(
-        (element) => element.id !== action.payload.id
-      );
-      const cartData = previousState.data.filter(
         (element) => element.id === action.payload.id
       );
+      const cartData = previousState.data.filter(
+        (element) => element.id !== action.payload.id
+      );
+      console.log(wishListdata)
       return {
         ...previousState,
-        wishList: [...previousState.wishList, wishListdata],
+        wishList: [...previousState.wishList, ...wishListdata],
         data: [...cartData],
       };
     case 'MOVE_TO_CART':
+      console.log(action.payload.id)
       const cartDataFromWishList = previousState.wishList.filter(
         (element) => element.id === action.payload.id
       );

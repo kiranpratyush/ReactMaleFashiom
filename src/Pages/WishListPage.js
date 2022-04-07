@@ -23,7 +23,7 @@ export function WishListPage() {
                 key={element.id}
                 itemName={element.itemName}
                 price={element.price}
-                quantity={element.quantity}
+                quantity={element.quantity||1}
                 id={element.id}
                 image = {element.image}
               />
