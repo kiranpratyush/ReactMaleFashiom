@@ -54,7 +54,6 @@
   flex-direction: column;
   max-height: 200px;
   overflow-y: hidden;
-  padding-right: 40px;
 }
 .category-list:hover {
   overflow-y: auto;
