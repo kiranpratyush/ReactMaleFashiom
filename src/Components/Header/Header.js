@@ -11,7 +11,12 @@ export function Header() {
   const [authState, dispatch] = useAuthContext();
   function handleSignOutUser() {
     signOutUser()
-      .then(() => dispatch({ type: 'SET_USER', user: null }))
+      .then(() => {
+      dispatch({ type: 'SET_USER', user: null })
+      dispatch({type:"ADD_TO_CART",payload:{data:[]}})
+      dispatch({type:"ADD_TO_WISHLIST",payload:{data:[]}})
+      }
+      )
       .catch((error) => dispatch({ type: 'SET_USER', error }));
   }
   return (

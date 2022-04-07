@@ -13,8 +13,11 @@ export function Card({ id, itemName, price, image, rating }) {
   const isPresentInWishList = state.wishList.some(
     (element) => element.id === id
   );
-  console.log(isPresentInWishList);
   function handleAddToCart() {
+    if(!user.user)
+    {
+      navigate("/signin")
+    }
     dispatch({
       type: 'ADD_TO_CART',
       payload: { data: [{ id, itemName, price, image, quantity: 1 }], user:user.user.uid},

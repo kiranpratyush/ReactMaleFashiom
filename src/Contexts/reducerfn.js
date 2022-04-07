@@ -26,7 +26,6 @@ export function reducerfn(previousState, { type, payload }) {
         ...previousState.filter,
         category: categoryFilterList,
       };
-      console.log(filterList);
       return filter(previousState, filterList);
     case 'FILTER_BY_SORT':
       console.log(payload);

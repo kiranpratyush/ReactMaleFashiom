@@ -23,14 +23,20 @@ function reducerfn(previousState, action) {
         wishList: [...previousState.wishList, ...action.data],
       };
     case 'ADD_TO_CART':
-      setCart(action.payload.user, action.payload.data[0]);
+      if (action.payload.user) {
+        setCart(action.payload.user, action.payload.data[0]);
+      }
+
       return {
         ...previousState,
         data: [...previousState.data, ...action.payload.data],
       };
 
     case 'ADD_TO_WISHLIST':
-      setWishList(action.payload.user, action.payload.data[0]);
+      if (action.payload.user) {
+        setWishList(action.payload.user, action.payload.data[0]);
+      }
+
       return {
         ...previousState,
         wishList: [...previousState.wishList, ...action.payload.data],
@@ -63,7 +69,7 @@ function reducerfn(previousState, action) {
         data: [...previousState.data, ...cartDataFromWishList],
       };
     case 'REMOVE_FROM_CART':
-      console.log("i am running")
+      console.log('i am running');
       deleteCart(action.payload.user, action.payload.id);
       const data = previousState.data.filter(
         (element) => element.id !== action.payload.id
@@ -107,7 +113,6 @@ function CartContextProvider({ children }) {
     wishList: [],
   });
   useEffect(() => {
-    console.log('I am running', user);
     if (!user?.user?.uid) {
       return;
     }
