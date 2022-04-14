@@ -5,15 +5,20 @@ const CartContext = createContext();
 function reducerfn(previousState, action) {
   switch (action.type) {
     case 'INITIALIZE_DATA':
+      console.log("I am running")
       return {
         ...previousState,
-        data: [...previousState.data, ...action.data],
+        data: [ ...action.data],
       };
     case 'INITIALIZE_WISHLIST':
       return {
         ...previousState,
-        wishList: [...previousState.wishList, ...action.data],
+        wishList: [ ...action.data],
       };
+    case "EMPTY_CART":
+      return {
+        ...previousState,data:[],wishList:[]
+      }
     case 'ADD_TO_CART':
       return {
         ...previousState,
@@ -27,10 +32,10 @@ function reducerfn(previousState, action) {
       };
     case 'MOVE_TO_WISHLIST':
       const wishListdata = previousState.data.filter(
-        (element) => element.id !== action.payload.id
+        (element) => element.id === action.payload.id
       );
       const cartData = previousState.data.filter(
-        (element) => element.id === action.payload.id
+        (element) => element.id !== action.payload.id
       );
       return {
         ...previousState,
@@ -93,29 +98,14 @@ function CartContextProvider({ children }) {
     if (!user.user) {
       return;
     }
-    getCart(user.user).then((arr) =>
+
+    getCart(user.user.uid).then((arr) =>
       dispatch({ type: 'INITIALIZE_DATA', data: arr })
     );
-    getWishList(user.user).then((arr) =>
+    getWishList(user.user.uid).then((arr) =>
       dispatch({ type: 'INITIALIZE_WISHLIST', data: arr })
     );
-  }, []);
-  useEffect(() => {
-    if (!user.user) {
-      return;
-    }
-    for (let data of state.data) {
-      setCart(user.user, data);
-    }
-  }, [state.data, user.user]);
-  useEffect(() => {
-    if (!user.user) {
-      return;
-    }
-    for (let data of state.wishList) {
-      setWishList(user.user, data);
-    }
-  }, [state.wishList, user.user]);
+  }, [user.user]);
   return (
     <CartContext.Provider value={{ state, dispatch }}>
       {children}

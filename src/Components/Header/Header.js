@@ -4,14 +4,17 @@ import { NavLink } from 'react-router-dom';
 import './Header.css';
 import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
-import { useCartContext ,useAuthContext,signOutUser} from '../../export';
+import { useCartContext, useAuthContext, signOutUser } from '../../export';
 import { Link } from 'react-router-dom';
 export function Header() {
-  const { state } = useCartContext();
+  const { state ,dispatch:cartDispatch} = useCartContext();
   const [authState, dispatch] = useAuthContext();
   function handleSignOutUser() {
     signOutUser()
-      .then(() => dispatch({ type: 'SET_USER', user: null }))
+      .then(() => {
+        dispatch({ type: 'SET_USER', user: null });
+        cartDispatch({type:"EMPTY_CART"})
+      })
       .catch((error) => dispatch({ type: 'SET_USER', error }));
   }
   return (
@@ -42,11 +45,11 @@ export function Header() {
           <nav className="second-nav">
             <NavLink to="/cart" className="cart__button">
               <LocalMallOutlinedIcon />
-              <span>{state.data.length}</span>
+              <span>{authState.user?state.data.length:0}</span>
             </NavLink>
             <NavLink to="/wishlist" className="cart__button">
               <FavoriteBorderOutlinedIcon />
-              <span>{state.wishList.length}</span>
+              <span>{authState.user?state.wishList.length:0}</span>
             </NavLink>
           </nav>
         </div>

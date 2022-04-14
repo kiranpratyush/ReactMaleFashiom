@@ -2,8 +2,12 @@ import React from 'react';
 import FavoriteOutlinedIcon from '@mui/icons-material/FavoriteOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import './style.css';
-import { Rating,useCartContext } from '../../export';
+import { Rating, useCartContext, useAuthContext, setCart } from '../../export';
+import { useNavigate, useLocation } from 'react-router-dom';
 export function Card({ id, itemName, price, image, rating }) {
+  const [authState] = useAuthContext();
+  const navigate = useNavigate();
+  const location = useLocation();
   const { state, dispatch } = useCartContext();
   const isPresentInCart = state.data.some((element) => element.id === id);
   const isPresentInWishList = state.wishList.some(
@@ -11,12 +15,23 @@ export function Card({ id, itemName, price, image, rating }) {
   );
   console.log(isPresentInWishList);
   function handleAddToCart() {
-    dispatch({
-      type: 'ADD_TO_CART',
-      payload: { data: [{ id, itemName, price, image, quantity: 1 }] },
-    });
+    console.log(authState.user);
+    if (!authState.user) {
+      navigate('/signin', { state: { path: location.pathname } });
+      return;
+    }
+    const data = [{ id, itemName, price, image, quantity: 1 }];
+    setCart(authState.user.uid, data[0]).then(() =>
+      dispatch({
+        type: 'ADD_TO_CART',
+        payload: { data },
+      })
+    );
   }
   function handleAddToWishList() {
+    if (!authState.user) {
+      navigate('/signin', { state: { path: location.pathname } });
+    }
     dispatch({
       type: 'ADD_TO_WISHLIST',
       payload: { data: [{ id, itemName, price, image }] },
