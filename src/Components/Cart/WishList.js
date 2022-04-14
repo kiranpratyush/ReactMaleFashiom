@@ -15,12 +15,12 @@ export function WishList({ id, itemName, price, image }) {
   const [auth] = useAuthContext();
   function handleMoveToCart() {
     const data = state.wishList.filter((element) => element.id === id);
-    deleteWishList(auth.user.uid, id)
-      .then(() => setCart(auth.user.uid, data[0]))
+    deleteWishList(auth.user, id)
+      .then(() => setCart(auth.user, data[0]))
       .then(() => dispatch({ type: 'MOVE_TO_CART', payload: { id } }));
   }
   function handleRemoveWishList() {
-    deleteWishList(auth.user.uid, id).then(() =>
+    deleteWishList(auth.user, id).then(() =>
       dispatch({ type: 'REMOVE_FROM_WISHLIST', payload: { id } })
     );
   }

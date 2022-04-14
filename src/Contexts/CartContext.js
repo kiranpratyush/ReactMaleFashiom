@@ -1,11 +1,11 @@
 import React, { createContext, useContext, useEffect, useReducer } from 'react';
-import { getCart, setCart, getWishList, setWishList ,useAuthContext} from '../export';
+import { getCart, getWishList ,useAuthContext} from '../export';
 const CartContext = createContext();
 
 function reducerfn(previousState, action) {
   switch (action.type) {
     case 'INITIALIZE_DATA':
-      console.log("I am running")
+      console.log("I am running",action.data)
       return {
         ...previousState,
         data: [ ...action.data],
@@ -95,17 +95,17 @@ function CartContextProvider({ children }) {
     wishList: [],
   });
   useEffect(() => {
+    console.log(user)
     if (!user.user) {
       return;
     }
-
-    getCart(user.user.uid).then((arr) =>
+    getCart(user.user).then((arr) =>
       dispatch({ type: 'INITIALIZE_DATA', data: arr })
     );
-    getWishList(user.user.uid).then((arr) =>
+    getWishList(user.user).then((arr) =>
       dispatch({ type: 'INITIALIZE_WISHLIST', data: arr })
     );
-  }, [user.user]);
+  }, [user]);
   return (
     <CartContext.Provider value={{ state, dispatch }}>
       {children}

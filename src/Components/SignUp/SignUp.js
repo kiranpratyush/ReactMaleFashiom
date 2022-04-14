@@ -24,10 +24,10 @@ export function SignUp() {
           setDisabled(false);
           setValue('SIGN UP');
           navigate('/');
-          dispatch({ type: 'SET_USER', user });
+          dispatch({ type: 'SET_USER', user:user.uid });
         })
         .catch((error) => {
-          console.log(error);
+          console.error(error);
           setDisabled(false);
           setValue('SIGN UP');
         });

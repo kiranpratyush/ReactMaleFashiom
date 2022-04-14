@@ -17,6 +17,7 @@ export function SignIn() {
       .then((user) => {
         setValue("SIGN IN")
         setDisabled(false)
+        console.log(user)
         dispatch({ type: 'SET_USER', user });
       })
       .catch((error) => {

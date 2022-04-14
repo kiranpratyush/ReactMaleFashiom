@@ -6,6 +6,7 @@ import { Rating, useCartContext, useAuthContext, setCart } from '../../export';
 import { useNavigate, useLocation } from 'react-router-dom';
 export function Card({ id, itemName, price, image, rating }) {
   const [authState] = useAuthContext();
+  console.log(authState)
   const navigate = useNavigate();
   const location = useLocation();
   const { state, dispatch } = useCartContext();

@@ -20,15 +20,15 @@ export function Cart({ id, itemName, price, image, quantity }) {
       (element) => element.id === id
     );
     console.log(id)
-    deleteCart(authState.user.uid,id)
-    setWishList(authState.user.uid,data[0])
+    deleteCart(authState.user,id)
+    setWishList(authState.user,data[0])
     .then(()=>dispatch({ type: 'MOVE_TO_WISHLIST', payload: {id}}))
     
   }
 
   function handleRemoveCart() {
     console.log(authState)
-    deleteCart(authState.user.uid, id).then(() =>
+    deleteCart(authState.user, id).then(() =>
       dispatch({ type: 'REMOVE_FROM_CART', payload: { id } })
     );
   }
