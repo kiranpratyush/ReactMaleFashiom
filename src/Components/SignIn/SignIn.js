@@ -1,13 +1,17 @@
 import React, { useRef, useState } from 'react';
 import { useAuthContext } from '../../Contexts/AuthContext';
 import { signIn } from '../../fireBaseAuth';
+import { useLocation ,useNavigate} from 'react-router-dom';
 import './Signin.css';
 export function SignIn() {
-  const [state, dispatch] = useAuthContext();
+  const [auth, dispatch] = useAuthContext();
   const [value, setValue] = useState('SIGN IN');
   const [disabled, setDisabled] = useState(false);
+  const navigate = useNavigate()
+  const {state} = useLocation()
   const emailRef = useRef();
   const passwordRef = useRef();
+  console.log(state)
   function handleSubmit(e) {
     setValue('SIGNING IN....');
     setDisabled(true);
@@ -19,17 +23,19 @@ export function SignIn() {
         setValue("SIGN IN")
         setDisabled(false)
         dispatch({ type: 'SET_USER', user });
+        navigate(state?.path||"/")
       })
       .catch((error) => {
       setValue("SIGN IN")
       setDisabled(false)
-      dispatch({ type: 'SET_USER', error })}
+      console.error(error)
+      }
       );
     emailRef.current.value = '';
     passwordRef.current.value = '';
   }
-  console.log(state.user);
-  return !state.user ? (
+  console.log(auth.user);
+  return !auth.user ? (
     <div className="sign-in">
       <h2>SIGN IN</h2>
       <form className="form-signin" onSubmit={handleSubmit}>

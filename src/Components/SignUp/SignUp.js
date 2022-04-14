@@ -1,10 +1,10 @@
 import React, { useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,useLocation } from 'react-router-dom';
 import './Signup.css';
 import { useAuthContext } from '../../Contexts/AuthContext';
 import { signUp } from '../../fireBaseAuth';
 export function SignUp() {
-  const [state, dispatch] = useAuthContext();
+  const [auth, dispatch] = useAuthContext();
   const [value, setValue] = useState('SIGN UP');
   const [disabled, setDisabled] = useState(false);
   const nameRef = useRef();
@@ -12,6 +12,7 @@ export function SignUp() {
   const passwordRef = useRef();
   const confirmPasswordRef = useRef();
   const navigate = useNavigate();
+  const {state} = useLocation()
   function handleSubmit(e) {
     e.preventDefault();
     const email = emailRef.current.value;
@@ -24,11 +25,11 @@ export function SignUp() {
         .then((user) => {
           setDisabled(false);
           setValue('SIGN UP');
-          navigate('/');
+          navigate(state?.path||"/");
           dispatch({ type: 'SET_USER', user });
         })
         .catch((error) => {
-          console.log(error);
+          console.error(error);
           setDisabled(false);
           setValue('SIGN UP');
         });
@@ -36,7 +37,7 @@ export function SignUp() {
     }
   }
 
-  return state.user == null ? (
+  return auth.user == null ? (
     <div className="sign-up">
       <h2>SIGN UP</h2>
       <form className="form-signup" onSubmit={handleSubmit}>
