@@ -55,9 +55,24 @@ header {
   justify-content: space-evenly;
   gap: 10px;
 }
-/* .first-nav a {
-  color: var(--color-black);
-} */
+.first-nav a{
+  position: relative;
+}
+.first-nav a::after{
+  height:2px;
+  width:100%;
+  content: "";
+  background:red;
+  position: absolute;
+  top:20px;
+  left:0;
+  transition: width 0.3s;
+}
+.first-nav a:hover::after{
+  background: black;
+  width: 40%;
+  transition: width 0.3s;
+}
 .second-nav {
   display: flex;
   justify-content: flex-end;

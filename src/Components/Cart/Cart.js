@@ -31,6 +31,7 @@ export function Cart({ id, itemName, price, image, quantity }) {
     deleteCart(authState.user, id).then(() =>
       dispatch({ type: 'REMOVE_FROM_CART', payload: { id } })
     );
+
   }
   return (
     <div className="cart">

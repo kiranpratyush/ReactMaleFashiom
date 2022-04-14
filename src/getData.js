@@ -1,3 +1,4 @@
+
 import { collection, getDocs, doc, setDoc, deleteDoc } from 'firebase/firestore';
 import { db } from './firebase';
 import { getStorage, ref, getDownloadURL } from 'firebase/storage';
@@ -39,6 +40,11 @@ async function setCart(userId, data) {
     id: data.id,
   });
 }
+async function deleteCart(userId,data)
+{
+  const userRef = doc(db, `users/${userId}/cart/${data}`);
+  await deleteDoc(userRef)
+}
 
 async function getCart(userId) {
   const userRef = collection(db, `users/${userId}/cart`);
@@ -60,7 +66,6 @@ async function getWishList(userId) {
 }
 async function setWishList(userId, data) {
   const userRef = doc(db, `users/${userId}/wishlist/${data.id}`);
-  console.log(data)
   await setDoc(userRef, {
     itemName: data.itemName,
     price: data.price,
@@ -80,3 +85,4 @@ async function deleteWishList(userId,dataId)
   await deleteDoc(docRef)
 }
 export { getData, getCart, setCart, getWishList, setWishList,deleteWishList,deleteCart };
+

@@ -1,5 +1,7 @@
 .card-imgwrapper {
   object-fit: cover;
+  max-height:376px;
+  overflow: hidden;
 }
 img {
   width: 100%;
@@ -15,7 +17,7 @@ img {
   max-width: 460px;
   min-width: 260px;
   gap: 10px;
-  
+  justify-content: space-between;
 }
 .card-animated h4 {
   margin-top: 20px;
@@ -57,7 +59,7 @@ img {
 .card-animated i {
   font-size: 2rem;
 }
-.card-animated:hover .cart {
+.card-animated:hover .addtocart {
   opacity: 1;
   transform: translateY(29px);
   display: inline-block;
@@ -65,8 +67,9 @@ img {
   color: var(--color-card);
   font-weight: 700;
   text-decoration: none;
+  font-size:1rem;
 }
-.card-animated .cart {
+.card-animated .addtocart {
   color: var(--color-card);
   font-weight: 700;
   opacity: 0;

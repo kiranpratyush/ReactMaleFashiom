@@ -17,7 +17,7 @@ export function Aside() {
           dispatch({ type: 'CLEAR_FILTER' });
         }}
       >
-        Clear filter
+        Clear 
       </button>
     </aside>
   );

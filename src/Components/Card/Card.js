@@ -1,6 +1,7 @@
 import React from 'react';
 import FavoriteOutlinedIcon from '@mui/icons-material/FavoriteOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
+import { useAuthContext } from '../../export';
 import './style.css';
 import { Rating, useCartContext, useAuthContext, setCart } from '../../export';
 import { useNavigate, useLocation } from 'react-router-dom';
@@ -10,11 +11,12 @@ export function Card({ id, itemName, price, image, rating }) {
   const navigate = useNavigate();
   const location = useLocation();
   const { state, dispatch } = useCartContext();
+  const navigate = useNavigate()
+  const [user]= useAuthContext()
   const isPresentInCart = state.data.some((element) => element.id === id);
   const isPresentInWishList = state.wishList.some(
     (element) => element.id === id
   );
-  console.log(isPresentInWishList);
   function handleAddToCart() {
     console.log(authState.user);
     if (!authState.user) {
@@ -28,6 +30,7 @@ export function Card({ id, itemName, price, image, rating }) {
         payload: { data },
       })
     );
+
   }
   function handleAddToWishList() {
     if (!authState.user) {
@@ -35,7 +38,7 @@ export function Card({ id, itemName, price, image, rating }) {
     }
     dispatch({
       type: 'ADD_TO_WISHLIST',
-      payload: { data: [{ id, itemName, price, image }] },
+      payload: { data: [{ id, itemName, price, image,quantity:1 }],user:user.user.uid },
     });
   }
   return (
@@ -56,9 +59,8 @@ export function Card({ id, itemName, price, image, rating }) {
       </button>
       <div className="card-animated-body">
         <button
-          className="btn btn-link cart"
-          onClick={handleAddToCart}
-          disabled={isPresentInCart}
+          className="btn btn-link addtocart"
+          onClick={!isPresentInCart?handleAddToCart:()=>navigate("/cart")}
         >
           {isPresentInCart ? 'Go to cart' : 'Add to cart'}
         </button>

@@ -12,7 +12,7 @@ export function WishListPage() {
       <div
         className={
           state.wishList.length === 0
-            ? 'cartcontainer cartempy__middle'
+            ? 'cartempty__middle'
             : 'cartcontainer'
         }
       >
@@ -23,7 +23,7 @@ export function WishListPage() {
                 key={element.id}
                 itemName={element.itemName}
                 price={element.price}
-                quantity={element.quantity}
+                quantity={element.quantity||1}
                 id={element.id}
                 image = {element.image}
               />

@@ -9,9 +9,9 @@ export function reducerfn(previousState, { type, payload }) {
           {
             id: payload.id,
             itemName: payload.title,
-            price: payload.price,
+            price: Number.parseFloat(payload.price),
             image: payload.image,
-            category: payload.category,
+            category: payload.category.toLowerCase(),
             rating: Number.parseInt(payload.rating),
           },
         ],
@@ -26,7 +26,6 @@ export function reducerfn(previousState, { type, payload }) {
         ...previousState.filter,
         category: categoryFilterList,
       };
-      console.log(filterList);
       return filter(previousState, filterList);
     case 'FILTER_BY_SORT':
       console.log(payload);

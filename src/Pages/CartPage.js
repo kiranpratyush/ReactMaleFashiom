@@ -1,7 +1,6 @@
 import React from 'react';
 import './Cartpage.css';
 import { Cart, Checkout, Header, useCartContext, Empty } from '../export';
-
 export function CartPage() {
   const { state } = useCartContext();
   return (
