@@ -87,7 +87,7 @@ function CartContextProvider({ children }) {
   const [user] = useAuthContext();
   const [state, dispatch] = useReducer(reducerfn, {
     data: [],
-    wishList: [{ itemName: 'shoe', price: 20, quantity: 1, id: 1 }],
+    wishList: [],
   });
   useEffect(() => {
     if (!user.user) {
