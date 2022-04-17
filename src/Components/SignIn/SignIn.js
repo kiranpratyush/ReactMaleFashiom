@@ -1,10 +1,12 @@
 import React, { useRef, useState } from 'react';
 import { useAuthContext, signIn } from '../../export';
+import {useNavigate} from "react-router-dom"
 import './Signin.css';
 export function SignIn() {
   const [state, dispatch] = useAuthContext();
   const [value, setValue] = useState('SIGN IN');
   const [disabled, setDisabled] = useState(false);
+  const navigate = useNavigate()
   const emailRef = useRef();
   const passwordRef = useRef();
   function handleSubmit(e) {
@@ -61,6 +63,7 @@ export function SignIn() {
             signIn('xyz@gmail.com', '123456')
               .then((user) => {
                 dispatch({ type: 'SET_USER', user });
+                navigate("/")
               })
               .catch((error) => {
                 dispatch({ type: 'SET_USER', error });

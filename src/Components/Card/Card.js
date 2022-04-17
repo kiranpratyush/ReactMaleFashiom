@@ -1,45 +1,49 @@
 import React from 'react';
 import FavoriteOutlinedIcon from '@mui/icons-material/FavoriteOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
-import { useAuthContext } from '../../export';
 import './style.css';
-import { Rating, useCartContext, useAuthContext, setCart } from '../../export';
+import {
+  Rating,
+  useCartContext,
+  useAuthContext,
+  setCart,
+  setWishList,
+} from '../../export';
 import { useNavigate, useLocation } from 'react-router-dom';
 export function Card({ id, itemName, price, image, rating }) {
   const [authState] = useAuthContext();
-  console.log(authState)
   const navigate = useNavigate();
   const location = useLocation();
   const { state, dispatch } = useCartContext();
-  const navigate = useNavigate()
-  const [user]= useAuthContext()
+  const [user] = useAuthContext();
   const isPresentInCart = state.data.some((element) => element.id === id);
   const isPresentInWishList = state.wishList.some(
     (element) => element.id === id
   );
   function handleAddToCart() {
-    console.log(authState.user);
     if (!authState.user) {
       navigate('/signin', { state: { path: location.pathname } });
       return;
     }
     const data = [{ id, itemName, price, image, quantity: 1 }];
-    setCart(authState.user.uid, data[0]).then(() =>
+    setCart(authState.user, data[0]).then(() =>
       dispatch({
         type: 'ADD_TO_CART',
         payload: { data },
       })
     );
-
   }
   function handleAddToWishList() {
     if (!authState.user) {
       navigate('/signin', { state: { path: location.pathname } });
     }
-    dispatch({
-      type: 'ADD_TO_WISHLIST',
-      payload: { data: [{ id, itemName, price, image,quantity:1 }],user:user.user.uid },
-    });
+    const data = [{ id, itemName, price, image, quantity: 1 }];
+    setWishList(authState.user, data[0]).then(() =>
+      dispatch({
+        type: 'ADD_TO_WISHLIST',
+        payload: { data },
+      })
+    );
   }
   return (
     <div className="card-animated">
@@ -60,7 +64,7 @@ export function Card({ id, itemName, price, image, rating }) {
       <div className="card-animated-body">
         <button
           className="btn btn-link addtocart"
-          onClick={!isPresentInCart?handleAddToCart:()=>navigate("/cart")}
+          onClick={!isPresentInCart ? handleAddToCart : () => navigate('/cart')}
         >
           {isPresentInCart ? 'Go to cart' : 'Add to cart'}
         </button>

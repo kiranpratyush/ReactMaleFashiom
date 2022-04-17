@@ -74,11 +74,7 @@ async function setWishList(userId, data) {
     quantity:data.quantity
   });
 }
-async function deleteCart(userId,dataId)
-{
-  const docRef = doc(db,`users/${userId}/cart/${dataId}`)
-  await deleteDoc(docRef)
-}
+
 async function deleteWishList(userId,dataId)
 {
   const docRef = doc(db,`users/${userId}/wishlist/${dataId}`)

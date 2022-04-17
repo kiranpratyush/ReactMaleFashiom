@@ -119,10 +119,10 @@ function CartContextProvider({ children }) {
     if (!user.user) {
       return;
     }
-    getCart(user.user.uid).then((arr) =>
+    getCart(user.user).then((arr) =>
       dispatch({ type: 'INITIALIZE_DATA', data: arr })
     );
-    getWishList(user.user.uid).then((arr) =>
+    getWishList(user.user).then((arr) =>
       dispatch({ type: 'INITIALIZE_WISHLIST', data: arr })
     );
   }, [user]);

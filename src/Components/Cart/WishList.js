@@ -15,8 +15,14 @@ export function WishList({ id, itemName, price, image }) {
   const [auth] = useAuthContext();
   function handleMoveToCart() {
     const data = state.wishList.filter((element) => element.id === id);
+    console.log(auth.user)
     deleteWishList(auth.user, id)
-      .then(() => setCart(auth.user, data[0]))
+      .then(
+        (res) => 
+        {setCart(auth.user, data[0])
+         console.log(res)
+        }
+      )
       .then(() => dispatch({ type: 'MOVE_TO_CART', payload: { id } }));
   }
   function handleRemoveWishList() {
