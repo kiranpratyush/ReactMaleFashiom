@@ -15,7 +15,6 @@ export function Card({ id, itemName, price, image, rating }) {
   const navigate = useNavigate();
   const location = useLocation();
   const { state, dispatch } = useCartContext();
-  const [user] = useAuthContext();
   const isPresentInCart = state.data.some((element) => element.id === id);
   const isPresentInWishList = state.wishList.some(
     (element) => element.id === id

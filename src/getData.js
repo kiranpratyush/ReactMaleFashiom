@@ -29,7 +29,6 @@ async function getData() {
 }
 
 async function setCart(userId, data) {
-  console.log("setting",userId)
   const userRef = doc(db, `users/${userId}/cart/${data.id}`);
   console.log(userRef)
   await setDoc(userRef, {
