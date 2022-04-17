@@ -2,18 +2,36 @@ import React from 'react';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import CloseIcon from '@mui/icons-material/Close';
 import './cart.css';
-import { ImageContainer,useCartContext,Quantity,useAuthContext } from '../../export';
+import {
+  ImageContainer,
+  useCartContext,
+  Quantity,
+  deleteCart,
+  useAuthContext,
+  setWishList
+} from '../../export';
 
 export function Cart({ id, itemName, price, image, quantity }) {
-  const { dispatch } = useCartContext();
-  const [user] = useAuthContext()
-  console.log(image);
+  const { state,dispatch } = useCartContext();
+  const [ authState ] = useAuthContext();
+
   function handleMoveToWhishlist() {
-    dispatch({ type: 'MOVE_TO_WISHLIST', payload: {  id,user:user.user.uid } });
+    const data =  state.data.filter(
+      (element) => element.id === id
+    );
+    console.log(id)
+    deleteCart(authState.user,id)
+    setWishList(authState.user,data[0])
+    .then(()=>dispatch({ type: 'MOVE_TO_WISHLIST', payload: {id}}))
+    
   }
 
   function handleRemoveCart() {
-    dispatch({ type: 'REMOVE_FROM_CART', payload: { id ,user:user.user.uid } });
+    console.log(authState)
+    deleteCart(authState.user, id).then(() =>
+      dispatch({ type: 'REMOVE_FROM_CART', payload: { id } })
+    );
+
   }
   return (
     <div className="cart">

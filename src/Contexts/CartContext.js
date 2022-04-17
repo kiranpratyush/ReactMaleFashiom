@@ -12,16 +12,19 @@ const CartContext = createContext();
 function reducerfn(previousState, action) {
   switch (action.type) {
     case 'INITIALIZE_DATA':
-      console.log(action.data);
       return {
         ...previousState,
-        data: [...previousState.data, ...action.data],
+        data: [ ...action.data],
       };
     case 'INITIALIZE_WISHLIST':
       return {
         ...previousState,
-        wishList: [...previousState.wishList, ...action.data],
+        wishList: [ ...action.data],
       };
+    case "EMPTY_CART":
+      return {
+        ...previousState,data:[],wishList:[]
+      }
     case 'ADD_TO_CART':
       if (action.payload.user) {
         setCart(action.payload.user, action.payload.data[0]);
@@ -113,7 +116,7 @@ function CartContextProvider({ children }) {
     wishList: [],
   });
   useEffect(() => {
-    if (!user?.user?.uid) {
+    if (!user.user) {
       return;
     }
     getCart(user.user.uid).then((arr) =>
@@ -122,7 +125,7 @@ function CartContextProvider({ children }) {
     getWishList(user.user.uid).then((arr) =>
       dispatch({ type: 'INITIALIZE_WISHLIST', data: arr })
     );
-  }, [user?.user?.uid]);
+  }, [user]);
 
   return (
     <CartContext.Provider value={{ state, dispatch }}>

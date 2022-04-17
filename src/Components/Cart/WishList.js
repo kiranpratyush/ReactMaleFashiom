@@ -2,16 +2,27 @@ import React from 'react';
 import './cart.css';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import CloseIcon from '@mui/icons-material/Close';
-import { ImageContainer,useCartContext ,useAuthContext} from '../../export';
+import {
+  ImageContainer,
+  useCartContext,
+  useAuthContext,
+  setCart,
+  deleteWishList,
+} from '../../export';
 
 export function WishList({ id, itemName, price, image }) {
-  const { dispatch } = useCartContext();
-  const [user] = useAuthContext()
+  const { state, dispatch } = useCartContext();
+  const [auth] = useAuthContext();
   function handleMoveToCart() {
-    dispatch({ type: 'MOVE_TO_CART', payload: { id,user:user.user.uid } });
+    const data = state.wishList.filter((element) => element.id === id);
+    deleteWishList(auth.user, id)
+      .then(() => setCart(auth.user, data[0]))
+      .then(() => dispatch({ type: 'MOVE_TO_CART', payload: { id } }));
   }
   function handleRemoveWishList() {
-    dispatch({ type: 'REMOVE_FROM_WISHLIST', payload: { id,user:user.user.uid } });
+    deleteWishList(auth.user, id).then(() =>
+      dispatch({ type: 'REMOVE_FROM_WISHLIST', payload: { id } })
+    );
   }
   return (
     <div className="cart">
