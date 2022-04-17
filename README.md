@@ -25,5 +25,4 @@ https://user-images.githubusercontent.com/77445957/162124356-4273980b-0373-4b18-
 
 ### live link-
 
-
-https://whimsical-cannoli-ab9b4d.netlify.app/
+https://fancy-liger-d61dd9.netlify.app/
