@@ -19,13 +19,13 @@ function useAuthContext() {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        dispatch({ type: 'SET_USER', user, error: null });
+        dispatch({ type: 'SET_USER', user:user.uid, error: null });
       } else {
         dispatch({ typr: 'SET_USER', user: null, error: null });
       }
     });
     return unsubscribe;
-  }, [dispatch]);
+  }, []);
   return [state, dispatch];
 }
 function AuthContextProvider({ children }) {

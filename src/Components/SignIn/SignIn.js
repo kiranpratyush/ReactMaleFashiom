@@ -53,7 +53,7 @@ export function SignIn() {
         <button className="btn btn-primary" disabled={disabled}>
           {value}
         </button>
-        <br/>
+        <br />
         <button
           className="btn btn-primary"
           disabled={disabled}

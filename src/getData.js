@@ -1,4 +1,5 @@
-import { collection, getDocs, doc, setDoc ,deleteDoc} from 'firebase/firestore';
+
+import { collection, getDocs, doc, setDoc, deleteDoc } from 'firebase/firestore';
 import { db } from './firebase';
 import { getStorage, ref, getDownloadURL } from 'firebase/storage';
 const productsRef = collection(db, 'Products');
@@ -28,7 +29,9 @@ async function getData() {
 }
 
 async function setCart(userId, data) {
+  console.log("setting",userId)
   const userRef = doc(db, `users/${userId}/cart/${data.id}`);
+  console.log(userRef)
   await setDoc(userRef, {
     itemName: data.itemName,
     price: data.price,
@@ -71,10 +74,15 @@ async function setWishList(userId, data) {
     quantity:data.quantity
   });
 }
-async function deleteWishList(userId,data)
+async function deleteCart(userId,dataId)
 {
-  const userRef = doc(db, `users/${userId}/wishlist/${data}`);
-  console.log(userRef,userId,data)
-  await deleteDoc(userRef)
+  const docRef = doc(db,`users/${userId}/cart/${dataId}`)
+  await deleteDoc(docRef)
 }
-export { getData, getCart, setCart, getWishList, setWishList,deleteCart,deleteWishList };
+async function deleteWishList(userId,dataId)
+{
+  const docRef = doc(db,`users/${userId}/wishlist/${dataId}`)
+  await deleteDoc(docRef)
+}
+export { getData, getCart, setCart, getWishList, setWishList,deleteWishList,deleteCart };
+
